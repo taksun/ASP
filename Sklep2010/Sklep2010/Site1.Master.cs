@@ -25,14 +25,15 @@ namespace Sklep
             {
                 HyperLinkLogowanie.Visible = false;
                 HyperLinkWyloguj.Visible = true;
-                LabelWelcome.Text = "Witaj " + Session["user"];
-                LabelWelcome.Visible = true;
+                HyperLinkRejestracja.Visible = false;
+                HyperLinkMyAcc.Visible = true;
             }
             else
             {
                 HyperLinkLogowanie.Visible = true;
                 HyperLinkWyloguj.Visible = false;
-                LabelWelcome.Visible = false;
+                HyperLinkRejestracja.Visible = true;
+                HyperLinkMyAcc.Visible = false;
             }
         }
     }

@@ -60,3 +60,16 @@
     </tr>
     </table>
 
+<asp:SqlDataSource ID="SqlDataSourceLogin" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:CS %>" 
+    ProviderName="<%$ ConnectionStrings:CS.ProviderName %>" 
+    SelectCommand="SELECT userID FROM users WHERE ((login = @login) AND (pass = @pass));">
+    <SelectParameters>
+        <asp:ControlParameter ControlID="TextBoxLogin" Name="login" PropertyName="Text" 
+            Type="String" />
+        <asp:ControlParameter ControlID="TextBoxHaslo" Name="pass" PropertyName="Text" 
+            Type="String" />
+    </SelectParameters>
+</asp:SqlDataSource>
+
+

@@ -22,15 +22,6 @@ namespace Sklep {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
         
         /// <summary>
-        /// LabelWelcome control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelWelcome;
-        
-        /// <summary>
         /// HyperLinkStronaGlowna control.
         /// </summary>
         /// <remarks>
@@ -47,6 +38,15 @@ namespace Sklep {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLinkRejestracja;
+        
+        /// <summary>
+        /// HyperLinkMyAcc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLinkMyAcc;
         
         /// <summary>
         /// HyperLinkLogowanie control.

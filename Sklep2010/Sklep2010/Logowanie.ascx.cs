@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
 
 namespace Sklep
 {
@@ -18,18 +19,20 @@ namespace Sklep
 
         protected void Zaloguj_Click(object sender, EventArgs e)
         {
-            if ((TextBoxLogin.Text == "asd@asd.pl") && (TextBoxHaslo.Text == "asdqwe123"))
+            DataView dv = (DataView)SqlDataSourceLogin.Select(DataSourceSelectArguments.Empty);          
+
+            if (dv.Count > 0)
             {
-                Session["user"] = TextBoxLogin.Text;
+                DataRowView drv = dv[0];
+
+                Session["user"] = drv["userID"].ToString();
 
                 Server.Transfer("~/Default.aspx");
-                
             }
             else
             {
                 LInfo.Text = "Niepoprawny login lub hasło!";
                 LInfo.Visible = true;
-                
             }
 
         }

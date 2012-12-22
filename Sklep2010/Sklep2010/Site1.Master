@@ -29,12 +29,11 @@ Released   : 20120818
     
 	<div id="menu-wrapper">
 		<div id="menu" class="container">
-            <asp:Label ID="LabelWelcome" runat="server" Text="Label"></asp:Label>
-			<ul>
+            <ul>
                 <li class="current_page_item"><asp:HyperLink ID="HyperLinkStronaGlowna" runat="server" NavigateUrl="~/Default.aspx">Strona główna</asp:HyperLink></li>
 				<li><a href="#">Szukaj</a></li>
 				<li><a href="Basket.aspx">Koszyk</a></li>
-				<li><asp:HyperLink ID="HyperLinkRejestracja" runat="server" NavigateUrl="~/Register.aspx">Rejestracja</asp:HyperLink></li>
+				<li><asp:HyperLink ID="HyperLinkRejestracja" runat="server" NavigateUrl="~/Register.aspx">Rejestracja</asp:HyperLink><asp:HyperLink ID="HyperLinkMyAcc" runat="server" NavigateUrl="~/Default.aspx">Moje Konto</asp:HyperLink></li>
 				<li><asp:HyperLink ID="HyperLinkLogowanie" runat="server" NavigateUrl="~/Login.aspx">Logowanie</asp:HyperLink><asp:HyperLink ID="HyperLinkWyloguj" runat="server" NavigateUrl="~/Default.aspx?action=logout">Wyloguj</asp:HyperLink></li>
 			</ul>
 		</div>
