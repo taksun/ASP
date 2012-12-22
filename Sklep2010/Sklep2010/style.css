@@ -65,12 +65,12 @@ a:hover {
 
 #header-wrapper {
 	overflow: hidden;
-	height: 600px;
+	height: 300px;
 }
 
 #header {
 	width: 1200px;
-	height: 620px;
+	height: 310px;
 	margin: 0 auto;
 	background: url(images/img04.jpg) no-repeat right top;
 }
@@ -88,7 +88,7 @@ a:hover {
 }
 
 #logo h1 {
-	padding: 200px 0px 0px 0px;
+	padding: 100px 0px 0px 0px;
 	letter-spacing: -1px;
 	font-size: 100px;
 }
