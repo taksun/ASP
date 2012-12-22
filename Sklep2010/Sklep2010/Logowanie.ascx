@@ -19,7 +19,7 @@
             <asp:TextBox ID="TextBoxLogin" runat="server"></asp:TextBox>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
                 ControlToValidate="TextBoxLogin" Display="Dynamic" 
-                ErrorMessage="Pole nie może być puste!" ValidationGroup="login">*</asp:RequiredFieldValidator>
+                ErrorMessage="Pole login nie może być puste!" ValidationGroup="login">*</asp:RequiredFieldValidator>
             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
                 ControlToValidate="TextBoxLogin" Display="Dynamic" 
                 ErrorMessage="Login nie jest adresem email!" 
@@ -33,18 +33,15 @@
         </td>
         <td>
             <asp:TextBox ID="TextBoxHaslo" runat="server" TextMode="Password"></asp:TextBox>
-            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" 
-                ControlToValidate="TextBoxHaslo" 
-                ErrorMessage="Hasło musi się składać przynajmniej z 8 znaków!" 
-                ValidationExpression=".{8,}" Display="Dynamic" ValidationGroup="login">*</asp:RegularExpressionValidator>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
                 ControlToValidate="TextBoxHaslo" Display="Dynamic" 
-                ErrorMessage="Pole nie może być puste!" ValidationGroup="login">*</asp:RequiredFieldValidator>
+                ErrorMessage="Pole hasło nie może być puste!" ValidationGroup="login">*</asp:RequiredFieldValidator>
         </td>
     </tr>
     <tr>
         <td colspan="2">
-            <asp:Label ID="LInfo" runat="server" Text="Label" Visible="False"></asp:Label>
+            <asp:Label ID="LInfo" runat="server" Text="Label" Visible="False" 
+                ForeColor="Red"></asp:Label>
             </td>
     </tr>
     <tr>
@@ -61,11 +58,5 @@
                 ValidationGroup="login" />
         </td>
     </tr>
-    <tr>
-        <td colspan="2">
-            <asp:HyperLink ID="HyperLinkPrzypomnijHaslo" runat="server" 
-                NavigateUrl="~/Default.aspx">Przypomnij hasło</asp:HyperLink>
-        </td>
-    </tr>
-</table>
+    </table>
 
