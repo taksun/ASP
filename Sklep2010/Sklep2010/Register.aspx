@@ -22,6 +22,10 @@
                     <asp:TextBox ID="TextBoxEmail" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBoxEmail" Display="Dynamic" ErrorMessage="Musisz podać adres email!" ValidationGroup="Register" CssClass="auto-style2">*</asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBoxEmail" CssClass="auto-style2" Display="Dynamic" ErrorMessage="To nie jest poprawny adres email!" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="Register">*</asp:RegularExpressionValidator>
+                    <asp:CustomValidator ID="CustomValidator2" runat="server" 
+                        ControlToValidate="TextBoxEmail" CssClass="auto-style2" Display="Dynamic" 
+                        ErrorMessage="Podany email jest już użyty!" 
+                        onservervalidate="CustomValidator2_ServerValidate" ValidationGroup="Register">*</asp:CustomValidator>
                 </td>
             </tr>
             <tr>
@@ -86,12 +90,38 @@
             <tr>
                 <td>&nbsp;</td>
                 <td  class="auto-style2">
-                    <asp:Button ID="ButtonRejestracja" runat="server" Text="Zarejestruj" ValidationGroup="Register" />
+                    <asp:Button ID="ButtonRejestracja" runat="server" Text="Zarejestruj" 
+                        ValidationGroup="Register" onclick="ButtonRejestracja_Click" />
                 </td>
             </tr>
             <tr>
                 <td colspan="2"  class="auto-style2">
                     <asp:ValidationSummary ID="ValidationSummary1" runat="server" ValidationGroup="Register" DisplayMode="List" />
+                    <asp:SqlDataSource ID="SqlDataSourceRegister" runat="server" 
+                        ConnectionString="<%$ ConnectionStrings:CS %>" 
+                        InsertCommand="INSERT INTO users(login, pass, imie, nazwisko, adres, kod, miejscowosc) VALUES (@login, @pass, @imie, @nazwisko, @adres, @kod, @miejscowosc)" 
+                        ProviderName="<%$ ConnectionStrings:CS.ProviderName %>" 
+                        SelectCommand="SELECT userID FROM users WHERE (login = @login)">
+                        <InsertParameters>
+                            <asp:ControlParameter ControlID="TextBoxEmail" Name="login" 
+                                PropertyName="Text" />
+                            <asp:ControlParameter ControlID="TextBoxHaslo" Name="pass" 
+                                PropertyName="Text" />
+                            <asp:ControlParameter ControlID="TextBoxImie" Name="imie" PropertyName="Text" />
+                            <asp:ControlParameter ControlID="TextBoxNazwisko" Name="nazwisko" 
+                                PropertyName="Text" />
+                            <asp:ControlParameter ControlID="TextBoxAdres" Name="adres" 
+                                PropertyName="Text" />
+                            <asp:ControlParameter ControlID="TextBoxKodPocztowy" Name="kod" 
+                                PropertyName="Text" />
+                            <asp:ControlParameter ControlID="TextBoxMiejscowosc" Name="miejscowosc" 
+                                PropertyName="Text" />
+                        </InsertParameters>
+                        <SelectParameters>
+                            <asp:ControlParameter ControlID="TextBoxEmail" Name="login" PropertyName="Text" 
+                                Type="String" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
                 </td>
             </tr>
         </table>

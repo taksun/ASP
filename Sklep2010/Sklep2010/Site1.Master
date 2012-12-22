@@ -30,14 +30,66 @@ Released   : 20120818
 	<div id="menu-wrapper">
 		<div id="menu" class="container">
             <ul>
-                <li class="current_page_item"><asp:HyperLink ID="HyperLinkStronaGlowna" runat="server" NavigateUrl="~/Default.aspx">Strona główna</asp:HyperLink></li>
-				<li><a href="#">Szukaj</a></li>
-				<li><a href="Basket.aspx">Koszyk</a></li>
-				<li><asp:HyperLink ID="HyperLinkRejestracja" runat="server" NavigateUrl="~/Register.aspx">Rejestracja</asp:HyperLink><asp:HyperLink ID="HyperLinkMyAcc" runat="server" NavigateUrl="~/Default.aspx">Moje Konto</asp:HyperLink></li>
-				<li><asp:HyperLink ID="HyperLinkLogowanie" runat="server" NavigateUrl="~/Login.aspx">Logowanie</asp:HyperLink><asp:HyperLink ID="HyperLinkWyloguj" runat="server" NavigateUrl="~/Default.aspx?action=logout">Wyloguj</asp:HyperLink></li>
-			</ul>
+
+                <% 
+                String urlName = System.IO.Path.GetFileName(Request.Url.ToString()).ToLower();
+               
+                if (urlName.Equals("default.aspx"))
+               {
+                   Response.Write("<li class=\"current_page_item\">");
+               }
+               else
+               {
+                   Response.Write("<li>");
+               }
+                %><asp:HyperLink ID="HyperLinkStronaGlowna" runat="server" NavigateUrl="~/Default.aspx">Strona główna</asp:HyperLink></li>
+
+			<%	if (urlName.Equals("search.aspx"))
+               {
+                   Response.Write("<li class=\"current_page_item\">");
+               }
+               else
+               {
+                   Response.Write("<li>");
+               }
+                %><asp:HyperLink ID="HyperLinkSearch" runat="server" NavigateUrl="~/Search.aspx">Szukaj</asp:HyperLink></li>
+
+				<% if (urlName.Equals("basket.aspx"))
+               {
+                   Response.Write("<li class=\"current_page_item\">");
+               }
+               else
+               {
+                   Response.Write("<li>");
+               }
+                %><asp:HyperLink ID="HyperLinkBasket" runat="server" NavigateUrl="~/Basket.aspx">Koszyk</asp:HyperLink></li>
+
+
+				<% if (urlName.Equals("register.aspx") || urlName.Equals("myacc.aspx"))
+               {
+                   Response.Write("<li class=\"current_page_item\">");
+               }
+               else
+               {
+                   Response.Write("<li>");
+               }
+                %><asp:HyperLink ID="HyperLinkRejestracja" runat="server" NavigateUrl="~/Register.aspx">Rejestracja</asp:HyperLink><asp:HyperLink ID="HyperLinkMyAcc" runat="server" NavigateUrl="~/Default.aspx">Moje Konto</asp:HyperLink></li>
+			
+            
+            <% if (urlName.Equals("login.aspx"))
+               {
+                   Response.Write("<li class=\"current_page_item\">");
+               }
+               else
+               {
+                   Response.Write("<li>");
+               }
+                %><asp:HyperLink ID="HyperLinkLogowanie" runat="server" NavigateUrl="~/Login.aspx">Logowanie</asp:HyperLink><asp:HyperLink ID="HyperLinkWyloguj" runat="server" NavigateUrl="~/Default.aspx?action=logout">Wyloguj</asp:HyperLink></li>
+			
+            </ul>
 		</div>
 	</div>
+    
     <div id="header">
 		<div id="logo" class="container">
 			<h1><a href="#">Open-Air </a></h1>

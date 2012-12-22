@@ -31,6 +31,24 @@ namespace Sklep {
         protected global::System.Web.UI.WebControls.HyperLink HyperLinkStronaGlowna;
         
         /// <summary>
+        /// HyperLinkSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLinkSearch;
+        
+        /// <summary>
+        /// HyperLinkBasket control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLinkBasket;
+        
+        /// <summary>
         /// HyperLinkRejestracja control.
         /// </summary>
         /// <remarks>
