@@ -79,24 +79,28 @@
     </Compile>
     <Compile Include="Admin\Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Admin.Master.designer.cs">
       <DependentUpon>Admin.Master</DependentUpon>
     </Compile>
     <Compile Include="Admin\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Products.aspx.cs">
       <DependentUpon>Products.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Products.aspx.designer.cs">
       <DependentUpon>Products.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Users.aspx.cs">
       <DependentUpon>Users.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Users.aspx.designer.cs">
       <DependentUpon>Users.aspx</DependentUpon>
