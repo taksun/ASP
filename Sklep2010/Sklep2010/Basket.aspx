@@ -5,10 +5,10 @@
             width: 100%;
         }
         .auto-style4 {
-            width: 912px;
+            width: 100px;
         }
         .auto-style5 {
-            width: 595px;
+            width: 200px;
         }
         .auto-style6 {
             width: 122px;
@@ -16,12 +16,82 @@
         .auto-style7 {
             width: 57px;
         }
+        .auto-style8 {
+            width: 40px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div>
+        <% if (Request.Cookies["basket"] == null)
+           { %>
+           Brak produktów w koszyku!
+        <% }
+           else
+           { %>
 
-        <table class="auto-style1">
+        <asp:SqlDataSource ID="SqlDataSourceKoszyk" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:CS %>" 
+            ProviderName="<%$ ConnectionStrings:CS.ProviderName %>" 
+            
+            
+            SelectCommand="SELECT p.produktID, p.nazwa, k.nazwa as kategoria, p.cena, kp.ilosc FROM produkty p, koszyk_produkt kp, kategorie k WHERE p.produktID = kp.produktID AND p.kategoria = k.kategoriaID AND kp.koszykID = @koszykID" 
+            
+            DeleteCommand="DELETE FROM koszyk_produkt WHERE koszykID = @koszykID AND produktID = @produktID" 
+            InsertCommand="DELETE FROM koszyk_produkt WHERE koszykID = @koszykID" 
+            UpdateCommand="UPDATE koszyk_produkt SET ilosc = @ilosc WHERE koszykID = @koszykID AND produktID = @produktID">
+            <DeleteParameters>
+                <asp:CookieParameter CookieName="basket" Name="koszykID" />
+                <asp:Parameter Name="produktID" Type="Int32" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:CookieParameter CookieName="basket" Name="koszykID" />
+            </InsertParameters>
+            <SelectParameters>
+                <asp:CookieParameter CookieName="basket" Name="koszykID" />
+            </SelectParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="ilosc" Type="Int32" />
+                <asp:CookieParameter CookieName="basket" Name="koszykID" />
+                <asp:Parameter Name="produktID" Type="Int32" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
+
+        <asp:DataList ID="DataListKoszyk" runat="server" 
+            DataSourceID="SqlDataSourceKoszyk" 
+            onitemdatabound="DataListKoszyk_ItemDataBound" 
+            oncancelcommand="DataListKoszyk_CancelCommand" 
+            ondeletecommand="DataListKoszyk_DeleteCommand" DataKeyField="produktID" 
+            onupdatecommand="DataListKoszyk_UpdateCommand">
+
+            <FooterTemplate>
+            <% if (DataListKoszyk.Items.Count > 0)
+               { %>
+            <tr>
+                <td colspan="4" align="right">Razem</td>
+                <td align="center">
+                    <asp:Label ID="LabelSuma" runat="server" Text='<%# suma.ToString("F") %>'></asp:Label></td>
+                <td>&nbsp;</td>
+            </tr>
+                <tr>
+                <td colspan="4" align="right">
+                    <asp:Button ID="ButtonWyczysc" CommandName="Cancel" runat="server" Text="Wyczyść" />
+                    <asp:Button ID="ButtonPrzelicz" CommandName="Update" runat="server" Text="Przelicz" ValidationGroup="koszyk" />
+                </td>
+                <td>
+                    <asp:Button ID="ButtonZamów" runat="server" Text="Złóż zamówienie" ValidationGroup="koszyk" />
+                </td>
+                <td>
+                    &nbsp;</td>
+            </tr>
+        </table>
+            <% } %>
+            </FooterTemplate>
+
+            <HeaderTemplate>
+            <% if (DataListKoszyk.Items.Count > 0)
+               { %>
+                <table class="auto-style1">
             <tr>
                 <th class="auto-style5">Nazwa</th>
                 <th class="auto-style4">Kategoria</th>
@@ -30,43 +100,40 @@
                 <th>Suma</th>
                 <th>&nbsp;</th>
             </tr>
-            <tr>
+            <% }
+               else
+               { %>
+               Brak produktów w koszyku!
+            <% } %>
+            </HeaderTemplate>
+
+            <ItemTemplate>
+                <tr>
                 <td class="auto-style5">
-                    <asp:Label ID="LabelProdukt" runat="server" Text="Kategoria 2"></asp:Label>
+                    <%# Eval("nazwa") %>
                 </td>
                 <td class="auto-style4">
-                    <asp:Label ID="LabelKategoria" runat="server" Text="Kategoria 1"></asp:Label>
+                    <%# Eval("kategoria") %>
                 </td>
                 <td align="center" class="auto-style6">
-                    <asp:Label ID="LabelCena" runat="server" Text="5.30"></asp:Label>
+                    <asp:Label ID="LabelCena" runat="server" Text='<%# Eval("cena") %>'></asp:Label>
                 </td>
                 <td align="center" class="auto-style7">
-                    <asp:TextBox ID="TextBoxIlosc" runat="server" Width="28px">1</asp:TextBox>
+                    <asp:TextBox ID="TextBoxIlosc" Text='<%# Eval("ilosc") %>' runat="server" CssClass="auto-style8"></asp:TextBox>
+                    <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Ilość musi być większa od 0!" ControlToValidate="TextBoxIlosc" ValueToCompare="0" Operator="GreaterThan" Text="*" Display="Dynamic" ToolTip="Ilość musi być większa od 0!" ValidationGroup="koszyk"></asp:CompareValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" Text="*" ControlToValidate="TextBoxIlosc" ErrorMessage="Musisz podać ilość!" ToolTip="Musisz podać ilość!" Display="Dynamic" ValidationGroup="koszyk"></asp:RequiredFieldValidator>
                 </td>
                 <td align="center">
-                    <asp:Label ID="LabelSuma" runat="server" Text="5.30"></asp:Label>
+                    <%# (int)Eval("ilosc")*(Decimal)Eval("cena") %>
                 </td>
                 <td align="center">
-                    <asp:Button ID="ButtonUsun" runat="server" Text="Usuń" />
+                    <asp:Button ID="ButtonUsun" CommandName="Delete" runat="server" Text="Usuń" />
                 </td>
             </tr>
-            <tr>
-                <td colspan="4" align="right">Razem</td>
-                <td align="center">5.30</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td colspan="4" align="right">
-                    <asp:Button ID="ButtonWyczysc" runat="server" Text="Wyczyść" />
-                    <asp:Button ID="ButtonPrzelicz" runat="server" Text="Przelicz" />
-                </td>
-                <td>
-                    <asp:Button ID="ButtonZamów" runat="server" Text="Złóż zamówienie" />
-                </td>
-                <td>
-                    &nbsp;</td>
-            </tr>
-        </table>
+            </ItemTemplate>
 
+        </asp:DataList>
+
+        <% } %>
     </div>
 </asp:Content>

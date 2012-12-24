@@ -13,84 +13,21 @@ namespace Sklep {
     public partial class Basket {
         
         /// <summary>
-        /// LabelProdukt control.
+        /// SqlDataSourceKoszyk control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelProdukt;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceKoszyk;
         
         /// <summary>
-        /// LabelKategoria control.
+        /// DataListKoszyk control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelKategoria;
-        
-        /// <summary>
-        /// LabelCena control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelCena;
-        
-        /// <summary>
-        /// TextBoxIlosc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxIlosc;
-        
-        /// <summary>
-        /// LabelSuma control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelSuma;
-        
-        /// <summary>
-        /// ButtonUsun control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonUsun;
-        
-        /// <summary>
-        /// ButtonWyczysc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonWyczysc;
-        
-        /// <summary>
-        /// ButtonPrzelicz control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonPrzelicz;
-        
-        /// <summary>
-        /// ButtonZamów control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonZamów;
+        protected global::System.Web.UI.WebControls.DataList DataListKoszyk;
     }
 }

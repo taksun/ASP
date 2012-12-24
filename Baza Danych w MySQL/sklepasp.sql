@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Czas wygenerowania: 24 Gru 2012, 12:35
+-- Czas wygenerowania: 24 Gru 2012, 16:42
 -- Wersja serwera: 5.5.27
 -- Wersja PHP: 5.4.7
 
@@ -40,6 +40,30 @@ INSERT INTO `kategorie` (`kategoriaID`, `nazwa`) VALUES
 (1, 'Laptopy'),
 (2, 'Procesory'),
 (3, 'RAM');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `koszyk`
+--
+
+CREATE TABLE IF NOT EXISTS `koszyk` (
+  `koszykID` varchar(36) COLLATE utf8_polish_ci NOT NULL,
+  `data` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`koszykID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `koszyk_produkt`
+--
+
+CREATE TABLE IF NOT EXISTS `koszyk_produkt` (
+  `koszykID` varchar(36) COLLATE utf8_polish_ci NOT NULL,
+  `produktID` int(11) NOT NULL,
+  `ilosc` int(11) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 -- --------------------------------------------------------
 
