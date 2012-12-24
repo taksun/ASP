@@ -13,12 +13,39 @@ namespace Sklep {
     public partial class Default {
         
         /// <summary>
-        /// ButtonDodaj control.
+        /// BulletedListKategorie control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonDodaj;
+        protected global::System.Web.UI.WebControls.BulletedList BulletedListKategorie;
+        
+        /// <summary>
+        /// SqlDataSourceKategorie control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceKategorie;
+        
+        /// <summary>
+        /// DataListProdukty control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataList DataListProdukty;
+        
+        /// <summary>
+        /// SqlDataSourceProdukty control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceProdukty;
     }
 }

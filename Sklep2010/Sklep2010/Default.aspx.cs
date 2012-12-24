@@ -11,7 +11,25 @@ namespace Sklep
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            int cat = 0;
+            if (Request.Params["category"] != null)
+            {
+                cat = int.Parse(Request.Params["category"]);
+            }
+            SqlDataSourceProdukty.SelectParameters["kategoria"].DefaultValue = cat.ToString();
+        }
+
+        protected void BulletedListKategorie_DataBound(object sender, EventArgs e)
+        {
+            if (BulletedListKategorie.Items.Count > 0)
+            {
+                foreach(ListItem item in BulletedListKategorie.Items)
+                {
+                    item.Value = "~/Default.aspx?category=" + item.Value;
+                }
+
+                BulletedListKategorie.Items[0].Attributes["class"] = "first";
+            }
         }
     }
 }
