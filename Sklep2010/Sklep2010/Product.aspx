@@ -5,19 +5,38 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div id="Div1">
-
+<asp:DataList ID="DataListProdukty" runat="server" 
+            DataSourceID="SqlDataSourceProdukty" DataKeyField="produktID"> 
+           
+            <FooterTemplate>
+                </table>
+                
+            </FooterTemplate>
+            <HeaderTemplate>
+                <% if (DataListProdukty.Items.Count > 0)
+                   { %>
                 <table>
                     <tr>
                         <th style="width:100px;"></th>
-                        <th style="width:100px;">Nazwa</th>
+                        <th style="width:200px;">Nazwa</th>
                         <th style="width:100px;">Producent</th>
                         <th style="width:100px;">Cena</th>
-                        <th style="width:100px;">kategoria</th>
-                        <th style="width:100px;">opis</th>
+                        <th style="width:100px;">Opis</th>
                     </tr>  
-               </table>
-          
-           
+                <% } %>
+            </HeaderTemplate>
+            <ItemTemplate>
+                
+                    <tr>
+                        <td><%# Eval("produktID") %></td>
+                        <td><%# Eval("nazwa") %></td>
+                        <td><%# Eval("producent") %></td>
+                        <td><%# Eval("cena") %></td>
+                        <td><%# Eval("opis") %></td>
+                    </tr>                  
+
+            </ItemTemplate>
+ </asp:DataList> 
        
         
         <asp:SqlDataSource ID="SqlDataSourceProdukty" runat="server" 

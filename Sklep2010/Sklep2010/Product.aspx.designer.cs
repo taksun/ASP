@@ -13,6 +13,15 @@ namespace Sklep2010 {
     public partial class Product {
         
         /// <summary>
+        /// DataListProdukty control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataList DataListProdukty;
+        
+        /// <summary>
         /// SqlDataSourceProdukty control.
         /// </summary>
         /// <remarks>
