@@ -16,7 +16,7 @@
                 <table>
                     <tr>
                         <th style="width:100px;"></th>
-                        <th style="width:200px;">Nazwa</th>
+                        <th style="width:100px;">Nazwa</th>
                         <th style="width:100px;">Producent</th>
                         <th style="width:100px;">Cena</th>
                         <th style="width:100px;">Opis</th>
