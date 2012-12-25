@@ -57,7 +57,7 @@
                     <td align="right" colspan="2">
                         <b>Forma płatności</b></td>
                     <td colspan="3">
-                        <asp:DropDownList ID="DropDownListPlatnosc" runat="server">
+                        <asp:DropDownList ID="DropDownListPlatnosc" runat="server" OnLoad="DropDownListPlatnosc_OnLoad">
                             <asp:ListItem>Przelew</asp:ListItem>
                             <asp:ListItem>PayPal</asp:ListItem>
                             <asp:ListItem>Pay4U</asp:ListItem>
@@ -88,7 +88,7 @@
                                     Imie i Nazwisko</td>
                                 <td>
                                     <asp:TextBox ID="TextBoxImieNazwisko" runat="server" 
-                                        Text="<%# usr.getImieNazwisko() %>"></asp:TextBox>
+                                        Text="<%# usr.getImieNazwisko() %>" OnLoad="TextBoxImieNazwisko_OnLoad"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
                                         ControlToValidate="TextBoxImieNazwisko" Display="Dynamic" 
                                         ErrorMessage="Musisz podac Imię i Nazwisko" Text="*" 
@@ -99,7 +99,7 @@
                                 <td>
                                     Adres</td>
                                 <td>
-                                    <asp:TextBox ID="TextBoxAdres" runat="server" Text="<%# usr.getAdres() %>"></asp:TextBox>
+                                    <asp:TextBox ID="TextBoxAdres" runat="server" Text="<%# usr.getAdres() %>" OnLoad="TextBoxAdres_OnLoad"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
                                         ControlToValidate="TextBoxAdres" Display="Dynamic" 
                                         ErrorMessage="Musisz podać Adres!" Text="*" ToolTip="Musisz podać Adres!" 
@@ -110,7 +110,7 @@
                                 <td>
                                     Kod Pocztowy</td>
                                 <td>
-                                    <asp:TextBox ID="TextBoxKod" runat="server" Text="<%# usr.getKod() %>"></asp:TextBox>
+                                    <asp:TextBox ID="TextBoxKod" runat="server" Text="<%# usr.getKod() %>" OnLoad="TextBoxKod_OnLoad"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
                                         ControlToValidate="TextBoxKod" Display="Dynamic" 
                                         ErrorMessage="Musisz podać Kod pocztowy!" Text="*" 
@@ -127,7 +127,7 @@
                                     Miejscowosc</td>
                                 <td>
                                     <asp:TextBox ID="TextBoxMiejscowosc" runat="server" 
-                                        Text="<%# usr.getMiejscowosc() %>"></asp:TextBox>
+                                        Text="<%# usr.getMiejscowosc() %>" OnLoad="TextBoxMiejscowosc_OnLoad"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
                                         ControlToValidate="TextBoxMiejscowosc" Display="Dynamic" 
                                         ErrorMessage="Musisz podać miejscowość!" Text="*" 
@@ -250,6 +250,63 @@
                     </td>
                 </tr>
 
+                <tr>
+                    <td colspan="5">
+                        <br />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" align="right"><b>Wybrana forma płatności: </b></td>
+                    <td colspan="3"><%# ddlpla.SelectedValue %></td>
+                </tr>
+
+                <tr>
+                    <td colspan="5">
+                        <br />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="center" colspan="5">
+                        <b>Dane do wysyłki:</b>
+                        <table>
+                            <tr>
+                                <td style="font-weight:bold;" align="right">
+                                    Imie i Nazwisko: </td>
+                                <td>
+                                    <% Response.Write(tbImieNazwisko.Text); %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold;" align="right">
+                                    Adres: </td>
+                                <td>
+                                    <% Response.Write(tbAdres.Text); %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold;" align="right">
+                                    Kod Pocztowy: </td>
+                                <td>
+                                    <% Response.Write(tbKod.Text); %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold;" align="right">
+                                    Miejscowosc: </td>
+                                <td>
+                                    <% Response.Write(tbMiejscowosc.Text); %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="right"><asp:Button ID="ButtonWstecz" runat="server" Text="Wstecz" onclick="ButtonWstecz_Click" />
+                                <td colspan="3"><asp:Button ID="ButtonPotwierz" runat="server" Text="Potwierdz zamówienie" onclick="ButtonPotwierz_Click" /></td></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
                 </table>
             </FooterTemplate>
             <HeaderTemplate>
@@ -288,8 +345,5 @@
                 </tr>
             </ItemTemplate>
         </asp:DataList>
-        <asp:Button ID="ButtonWstecz" runat="server" Text="Wstecz" 
-            onclick="ButtonWstecz_Click" />
-        <asp:Button ID="ButtonPotwierz" runat="server" Text="Potwierdz zamówienie" />
     </asp:Panel>
 </asp:Content>

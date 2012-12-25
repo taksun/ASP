@@ -14,6 +14,11 @@ namespace Sklep2010
         public Decimal wysylka = 30.0M;
         public User usr;
         public DropDownList ddlwys;
+        public DropDownList ddlpla;
+        public TextBox tbImieNazwisko;
+        public TextBox tbAdres;
+        public TextBox tbKod;
+        public TextBox tbMiejscowosc;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -68,6 +73,36 @@ namespace Sklep2010
         protected void DropDownListWysylka_OnLoad(object sender, EventArgs e)
         {
             ddlwys = (DropDownList)sender;
+        }
+
+        protected void DropDownListPlatnosc_OnLoad(object sender, EventArgs e)
+        {
+            ddlpla = (DropDownList)sender;
+        }
+
+        protected void TextBoxImieNazwisko_OnLoad(object sender, EventArgs e)
+        {
+            tbImieNazwisko = (TextBox)sender;
+        }
+
+        protected void TextBoxAdres_OnLoad(object sender, EventArgs e)
+        {
+            tbAdres = (TextBox)sender;
+        }
+
+        protected void TextBoxKod_OnLoad(object sender, EventArgs e)
+        {
+            tbKod = (TextBox)sender;
+        }
+
+        protected void TextBoxMiejscowosc_OnLoad(object sender, EventArgs e)
+        {
+            tbMiejscowosc = (TextBox)sender;
+        }
+
+        protected void ButtonPotwierz_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
