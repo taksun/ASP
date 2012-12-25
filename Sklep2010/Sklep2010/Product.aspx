@@ -5,8 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div id="Div1">
-        <% if (Request.Params["produktID"] != null)
-           { %>  
+
                 <table>
                     <tr>
                         <th style="width:100px;"></th>
@@ -33,12 +32,5 @@
            
         </asp:SqlDataSource>
       
-        <% }
-           else
-           { %>
-
-           Nasza strona główna HEY!
-
-        <% } %>
     </div>
 </asp:Content>

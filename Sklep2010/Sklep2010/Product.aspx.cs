@@ -11,7 +11,10 @@ namespace Sklep2010
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Request.Params["id"] == null)
+            {
+                Response.Redirect("~/Default.aspx");
+            }
         }
     }
 }
