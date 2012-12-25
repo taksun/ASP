@@ -7,11 +7,14 @@ using System.Web.UI.WebControls;
 
 namespace Sklep2010
 {
-    public partial class AccEdit : System.Web.UI.Page
+    public partial class MyAcc : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["user"] == null)
+            {
+                Response.Redirect("~/Basket.aspx");
+            }
         }
     }
 }

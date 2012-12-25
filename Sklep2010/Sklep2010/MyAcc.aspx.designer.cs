@@ -10,7 +10,7 @@
 namespace Sklep2010 {
     
     
-    public partial class AccEdit {
+    public partial class MyAcc {
         
         /// <summary>
         /// TextBoxEmail control.

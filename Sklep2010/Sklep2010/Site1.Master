@@ -73,7 +73,7 @@ Released   : 20120818
                {
                    Response.Write("<li>");
                }
-                %><asp:HyperLink ID="HyperLinkRejestracja" runat="server" NavigateUrl="~/Register.aspx">Rejestracja</asp:HyperLink><asp:HyperLink ID="HyperLinkMyAcc" runat="server" NavigateUrl="~/Default.aspx">Moje Konto</asp:HyperLink></li>
+                %><asp:HyperLink ID="HyperLinkRejestracja" runat="server" NavigateUrl="~/Register.aspx">Rejestracja</asp:HyperLink><asp:HyperLink ID="HyperLinkMyAcc" runat="server" NavigateUrl="~/MyAcc.aspx">Moje Konto</asp:HyperLink></li>
 			
             
             <% if (urlName.Equals("login.aspx"))

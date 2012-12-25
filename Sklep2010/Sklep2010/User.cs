@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
 using System.Data;
+using MySql.Data.MySqlClient;
 
 namespace Sklep2010
 {
@@ -20,30 +21,42 @@ namespace Sklep2010
 
         public User(int _id)
         {
-            SqlConnection conn;
-            SqlCommand cmd;
-            SqlDataReader rdr;
-            SqlParameter param;
+            MySqlConnection conn;
+            MySqlCommand cmd;
+            MySqlDataReader rdr;
+            MySqlParameter param;
 
-            conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["CS"].ConnectionString);
+            conn = new MySqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["CS"].ConnectionString);
 
             conn.Open();
 
-            cmd = new SqlCommand("SELECT * FROM users WHERE userID = @userID;");
+            cmd = new MySqlCommand("SELECT * FROM users WHERE userID = @userID;");
             cmd.Connection = conn;
 
-            param = new SqlParameter("userID", SqlDbType.Int);
+            param = new MySqlParameter("userID", MySqlDbType.Int32);
             param.Value = _id;
             cmd.Parameters.Add(param);
 
             rdr = cmd.ExecuteReader();
 
-            while (rdr.NextResult())
+            while (rdr.Read())
             {
-                id = rdr.GetInt32(0);
+                id = rdr.GetInt32(rdr.GetOrdinal("userID"));
+                login = rdr.GetString(rdr.GetOrdinal("login"));
+                pass = rdr.GetString(rdr.GetOrdinal("pass"));
+                imie = rdr.GetString(rdr.GetOrdinal("imie"));
+                nazwisko = rdr.GetString(rdr.GetOrdinal("nazwisko"));
+                adres = rdr.GetString(rdr.GetOrdinal("adres"));
+                kod = rdr.GetString(rdr.GetOrdinal("kod"));
+                miejscowosc = rdr.GetString(rdr.GetOrdinal("miejscowosc"));
             }
 
             conn.Close();
+        }
+
+        public String getImieNazwisko()
+        {
+            return imie + " " + nazwisko;
         }
     }
 }

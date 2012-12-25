@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="AccEdit.aspx.cs" Inherits="Sklep2010.AccEdit" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="MyAcc.aspx.cs" Inherits="Sklep2010.MyAcc" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .auto-style1 {
@@ -19,6 +19,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div style="width: 400px; margin: auto;">
+     Witaj <% Response.Write(((Sklep2010.User)Session["user"]).getImieNazwisko()); %>
         <table class="auto-style1">
             <tr>
                 <td class="auto-style3">Email:</td>

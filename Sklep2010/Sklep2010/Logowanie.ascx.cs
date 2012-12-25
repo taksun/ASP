@@ -25,7 +25,7 @@ namespace Sklep2010
             {
                 DataRowView drv = dv[0];
 
-                Session["user"] = drv["userID"].ToString();
+                Session["user"] = new User(int.Parse(drv["userID"].ToString()));
 
 
                 if (Request.Params["order"]!=null)

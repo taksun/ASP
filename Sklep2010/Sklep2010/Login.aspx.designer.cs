@@ -19,6 +19,6 @@ namespace Sklep2010 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Sklep.Logowanie Logowanie1;
+        protected global::Sklep2010.Logowanie Logowanie1;
     }
 }
