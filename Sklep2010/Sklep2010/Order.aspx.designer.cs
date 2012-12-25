@@ -10,15 +10,24 @@
 namespace Sklep2010 {
     
     
-    public partial class Login {
+    public partial class Order {
         
         /// <summary>
-        /// Logowanie1 control.
+        /// SqlDataSourceOrder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Sklep.Logowanie Logowanie1;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceOrder;
+        
+        /// <summary>
+        /// DataListOrder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataList DataListOrder;
     }
 }

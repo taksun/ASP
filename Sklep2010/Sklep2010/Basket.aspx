@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Basket.aspx.cs" Inherits="Sklep.Basket" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Basket.aspx.cs" Inherits="Sklep2010.Basket" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .auto-style1 {
@@ -79,7 +79,7 @@
                     <asp:Button ID="ButtonPrzelicz" CommandName="Update" runat="server" Text="Przelicz" ValidationGroup="koszyk" />
                 </td>
                 <td>
-                    <asp:Button ID="ButtonZamów" runat="server" Text="Złóż zamówienie" ValidationGroup="koszyk" />
+                    <asp:Button ID="ButtonZamow" runat="server" OnClick="ButtonZamow_Click" Text="Złóż zamówienie" ValidationGroup="koszyk" />
                 </td>
                 <td>
                     &nbsp;</td>

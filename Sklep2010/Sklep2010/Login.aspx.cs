@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Sklep
+namespace Sklep2010
 {
     public partial class Login : System.Web.UI.Page
     {

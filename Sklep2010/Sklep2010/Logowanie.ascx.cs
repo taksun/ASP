@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 
-namespace Sklep
+namespace Sklep2010
 {
 
     public partial class Logowanie : System.Web.UI.UserControl
@@ -27,7 +27,15 @@ namespace Sklep
 
                 Session["user"] = drv["userID"].ToString();
 
-                Server.Transfer("~/Default.aspx");
+
+                if (Request.Params["order"]!=null)
+                {
+                    Response.Redirect("~/Order.aspx");
+                }
+                else
+                {
+                    Response.Redirect("~/Default.aspx");
+                }
             }
             else
             {

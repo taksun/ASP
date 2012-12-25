@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 
-namespace Sklep
+namespace Sklep2010
 {
     public partial class Default : System.Web.UI.Page
     {

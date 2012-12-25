@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Sklep {
+namespace Sklep2010 {
     
     
     public partial class Default {

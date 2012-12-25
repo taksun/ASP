@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Sklep.Admin
+namespace Sklep2010.Admin
 {
     public partial class Admin : System.Web.UI.MasterPage
     {

@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Logowanie.ascx.cs" Inherits="Sklep.Logowanie" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Logowanie.ascx.cs" Inherits="Sklep2010.Logowanie" %>
 <style type="text/css">
     .style1
     {

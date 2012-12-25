@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 
-namespace Sklep
+namespace Sklep2010
 {
     public partial class Basket : System.Web.UI.Page
     {
@@ -45,6 +45,11 @@ namespace Sklep
 
                 SqlDataSourceKoszyk.Update();
             }
+        }
+
+        protected void ButtonZamow_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Order.aspx");
         }
 
     }

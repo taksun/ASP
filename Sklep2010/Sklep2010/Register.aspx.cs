@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 
-namespace Sklep
+namespace Sklep2010
 {
     public partial class Register : System.Web.UI.Page
     {
@@ -29,7 +29,7 @@ namespace Sklep
             {
                 SqlDataSourceRegister.Insert();
 
-                Server.Transfer("~/Default.aspx");
+                Response.Redirect("~/Default.aspx");
             }
         }
 

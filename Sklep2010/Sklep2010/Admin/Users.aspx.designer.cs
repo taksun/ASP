@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Sklep.Admin {
+namespace Sklep2010.Admin {
     
     
     public partial class Users {
