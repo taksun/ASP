@@ -6,21 +6,18 @@
 
     <div id="Div1">
         <% if (Request.Params["produktID"] != null)
-           { %>
-               
-            <HeaderTemplate>
-               
+           { %>  
                 <table>
                     <tr>
                         <th style="width:100px;"></th>
-                        <th style="width:200px;">Nazwa</th>
+                        <th style="width:100px;">Nazwa</th>
                         <th style="width:100px;">Producent</th>
-                        <th>Cena</th>
-                        <th>kategoria</th>
-                        <th>opis</th>
+                        <th style="width:100px;">Cena</th>
+                        <th style="width:100px;">kategoria</th>
+                        <th style="width:100px;">opis</th>
                     </tr>  
-               
-            </HeaderTemplate>
+               </table>
+          
            
        
         
