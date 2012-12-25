@@ -24,10 +24,11 @@
             ConnectionString="<%$ ConnectionStrings:CS %>" 
             ProviderName="<%$ ConnectionStrings:CS.ProviderName %>" 
             
-            SelectCommand="SELECT p.nazwa, p.cena, p.produktID, p.opis pr.nazwa as producent FROM produkty p, producenci pr WHERE (p.kategoria = ?) AND (pr.producentID = p.producent)"> 
+            
+                    SelectCommand="SELECT p.nazwa, p.cena, p.produktID, p.opis pr.nazwa as producent FROM produkty p, producenci pr WHERE (p.produktID = @produktID) AND (pr.producentID = p.producent)"> 
          
             <SelectParameters>
-                <asp:Parameter DefaultValue="0" Name="kategoria" Type="Int32" />
+                <asp:Parameter DefaultValue="" Name="produktID" Type="Int32" />
             </SelectParameters>
            
         </asp:SqlDataSource>

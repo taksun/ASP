@@ -15,6 +15,8 @@ namespace Sklep2010
             {
                 Response.Redirect("~/Default.aspx");
             }
+
+            SqlDataSourceProdukty.SelectParameters["produktID"].DefaultValue = Request.Params["id"];
         }
     }
 }
