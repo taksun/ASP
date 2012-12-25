@@ -58,5 +58,20 @@ namespace Sklep2010
         {
             return imie + " " + nazwisko;
         }
+
+        public String getAdres()
+        {
+            return adres;
+        }
+
+        public String getKod()
+        {
+            return kod;
+        }
+
+        public String getMiejscowosc()
+        {
+            return miejscowosc;
+        }
     }
 }

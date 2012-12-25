@@ -31,15 +31,44 @@
                 <asp:CookieParameter CookieName="basket" Name="koszykID" />
             </SelectParameters>
             </asp:SqlDataSource>
+
         <asp:DataList ID="DataListOrder" runat="server" 
             DataSourceID="SqlDataSourceOrder" 
             onitemdatabound="DataListOrder_ItemDataBound">
+
             <FooterTemplate>
+
+            <% if (DataListOrder.Items.Count > 0)
+               { %>
+
                 <tr>
                 <td colspan="4" align="right">Razem</td>
                 <td align="center">
                     <asp:Label ID="LabelSuma" runat="server" Text='<%# suma.ToString("F") %>'></asp:Label></td>
                 <td>&nbsp;</td>
+            <tr>
+                <td colspan="5" align="center">
+                <b>Dane do wysyłki:</b>
+                    <table>
+            <tr>
+                <td>Imie i Nazwisko</td>
+                <td><asp:TextBox ID="TextBoxImieNazwisko" runat="server" Text='<%# usr.getImieNazwisko() %>'></asp:TextBox></td> 
+            </tr>
+            <tr>
+                <td>Adres</td>
+                <td><asp:TextBox ID="TextBoxAdres" runat="server" Text='<%# usr.getAdres() %>'></asp:TextBox></td> 
+            </tr>
+            <tr>
+                <td>Kod Pocztowy</td>
+                <td><asp:TextBox ID="TextBoxKod" runat="server" Text='<%# usr.getKod() %>'></asp:TextBox></td> 
+            </tr>
+            <tr>
+                <td>Miejscowosc</td>
+                <td><asp:TextBox ID="TextBoxMiejscowosc" runat="server" Text='<%# usr.getMiejscowosc() %>'></asp:TextBox></td> 
+            </tr>
+        </table>
+                </td>
+            </tr>
             </tr>
                 <tr>
                 <td colspan="4" align="right">
@@ -50,8 +79,16 @@
                 </td>
             </tr>
         </table>
+
+        
+
+        <% } %>
+
             </FooterTemplate>
+
             <HeaderTemplate>
+            <% if (DataListOrder.Items.Count > 0)
+               { %>
                 <table class="auto-style1">
             <tr>
                 <th class="auto-style5">Nazwa</th>
@@ -60,7 +97,13 @@
                 <th class="auto-style7">Ilość</th>
                 <th>Suma</th>
             </tr>
+            <% }
+               else
+               {
+                   Response.Redirect("~/Default.aspx");
+               } %>
             </HeaderTemplate>
+
             <ItemTemplate>
                 <tr>
                 <td class="auto-style5">
@@ -80,6 +123,7 @@
                 </td>
             </tr>
             </ItemTemplate>
+
         </asp:DataList>
     </p>
 </asp:Content>

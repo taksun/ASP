@@ -11,6 +11,7 @@ namespace Sklep2010
     public partial class Order : System.Web.UI.Page
     {
         public Decimal suma = 0.0M;
+        public User usr;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,6 +24,8 @@ namespace Sklep2010
             {
                 Response.Redirect("~/Default.aspx");
             }
+
+            usr = (User)Session["user"];
         }
 
         protected void DataListOrder_ItemDataBound(object sender, DataListItemEventArgs e)
