@@ -73,5 +73,10 @@ namespace Sklep2010
         {
             return miejscowosc;
         }
+
+        public int getID()
+        {
+            return id;
+        }
     }
 }

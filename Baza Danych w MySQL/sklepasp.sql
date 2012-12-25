@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Czas wygenerowania: 24 Gru 2012, 16:42
+-- Czas wygenerowania: 25 Gru 2012, 17:22
 -- Wersja serwera: 5.5.27
 -- Wersja PHP: 5.4.7
 
@@ -53,6 +53,13 @@ CREATE TABLE IF NOT EXISTS `koszyk` (
   PRIMARY KEY (`koszykID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
+--
+-- Zrzut danych tabeli `koszyk`
+--
+
+INSERT INTO `koszyk` (`koszykID`, `data`) VALUES
+('01cdacb8-ea62-4eb8-a17b-9a41bfe2b3c4', '2012-12-25 15:18:54');
+
 -- --------------------------------------------------------
 
 --
@@ -64,6 +71,13 @@ CREATE TABLE IF NOT EXISTS `koszyk_produkt` (
   `produktID` int(11) NOT NULL,
   `ilosc` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `koszyk_produkt`
+--
+
+INSERT INTO `koszyk_produkt` (`koszykID`, `produktID`, `ilosc`) VALUES
+('c9eb872b-5939-4f70-9cfd-8b97a3b3e907', 1, 5);
 
 -- --------------------------------------------------------
 
@@ -137,6 +151,74 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`userID`, `login`, `pass`, `imie`, `nazwisko`, `adres`, `kod`, `miejscowosc`) VALUES
 (1, 'asd@asd.pl', 'asdqwe123', 'asd', 'asd', 'asdasdasd 12/213', '12-123', 'Asdland'),
 (2, 'asd@asd.ru', 'asdasdasd', 'asd', 'asd', 'asd', '15-123', 'asd');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `zamowienia`
+--
+
+CREATE TABLE IF NOT EXISTS `zamowienia` (
+  `zamowienieID` int(11) NOT NULL AUTO_INCREMENT,
+  `data` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `wysylka` varchar(20) COLLATE utf8_polish_ci NOT NULL,
+  `platnosc` varchar(20) COLLATE utf8_polish_ci NOT NULL,
+  `userID` int(11) NOT NULL,
+  `status` varchar(50) COLLATE utf8_polish_ci NOT NULL DEFAULT 'Oczekiwanie na płatność',
+  PRIMARY KEY (`zamowienieID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=5 ;
+
+--
+-- Zrzut danych tabeli `zamowienia`
+--
+
+INSERT INTO `zamowienia` (`zamowienieID`, `data`, `wysylka`, `platnosc`, `userID`, `status`) VALUES
+(3, '2012-12-25 16:19:04', 'Kurier', 'Przelew', 1, 'Oczekiwanie na płatność'),
+(4, '2012-12-25 16:20:03', 'Kurier', 'Przelew', 1, 'Oczekiwanie na płatność');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `zamowienia_produkty`
+--
+
+CREATE TABLE IF NOT EXISTS `zamowienia_produkty` (
+  `zamowienieID` int(11) NOT NULL,
+  `produktID` int(11) NOT NULL,
+  `ilosc` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `zamowienia_produkty`
+--
+
+INSERT INTO `zamowienia_produkty` (`zamowienieID`, `produktID`, `ilosc`) VALUES
+(3, 1, 11),
+(3, 3, 1),
+(4, 1, 11),
+(4, 3, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `zamowienia_wysylka`
+--
+
+CREATE TABLE IF NOT EXISTS `zamowienia_wysylka` (
+  `zamowienieID` int(11) NOT NULL,
+  `imieNazwisko` varchar(30) COLLATE utf8_polish_ci NOT NULL,
+  `adres` varchar(30) COLLATE utf8_polish_ci NOT NULL,
+  `kod` varchar(6) COLLATE utf8_polish_ci NOT NULL,
+  `miejscowosc` varchar(20) COLLATE utf8_polish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `zamowienia_wysylka`
+--
+
+INSERT INTO `zamowienia_wysylka` (`zamowienieID`, `imieNazwisko`, `adres`, `kod`, `miejscowosc`) VALUES
+(3, 'asd asd', 'asdasdasd 12/213', '12-123', 'Asdland'),
+(4, 'asd asd', 'asdasdasd 12/213', '12-123', 'Asdland');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

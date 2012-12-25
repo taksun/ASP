@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using MySql.Data.MySqlClient;
 
 namespace Sklep2010
 {
@@ -102,7 +103,72 @@ namespace Sklep2010
 
         protected void ButtonPotwierz_Click(object sender, EventArgs e)
         {
+            MySqlConnection conn;
+            MySqlCommand cmd;
+            MySqlDataReader rdr;
+            MySqlParameter param;
 
+            conn = new MySqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["CS"].ConnectionString);
+
+            conn.Open();
+
+            cmd = new MySqlCommand("INSERT INTO zamowienia(wysylka, platnosc, userID) VALUES (@wysylka, @platnosc, @userID); SELECT LAST_INSERT_ID();");
+            cmd.Connection = conn;
+
+            param = new MySqlParameter("wysylka", MySqlDbType.String);
+            param.Value = ddlwys.SelectedValue;
+            cmd.Parameters.Add(param);
+
+            param = new MySqlParameter("platnosc", MySqlDbType.String);
+            param.Value = ddlpla.SelectedValue;
+            cmd.Parameters.Add(param);
+
+            param = new MySqlParameter("userID", MySqlDbType.Int32);
+            param.Value = ((User)Session["user"]).getID();
+            cmd.Parameters.Add(param);
+
+            int id = Int32.Parse(cmd.ExecuteScalar().ToString());
+
+            cmd.CommandText = "INSERT INTO zamowienia_wysylka(zamowienieID, imieNazwisko, adres, kod, miejscowosc) VALUES (@zamowienieID, @imieNazwisko, @adres, @kod, @miejscowosc);";
+
+            param = new MySqlParameter("zamowienieID", MySqlDbType.Int32);
+            param.Value = id;
+            cmd.Parameters.Add(param);
+
+            param = new MySqlParameter("imieNazwisko", MySqlDbType.String);
+            param.Value = tbImieNazwisko.Text;
+            cmd.Parameters.Add(param);
+
+            param = new MySqlParameter("adres", MySqlDbType.String);
+            param.Value = tbAdres.Text;
+            cmd.Parameters.Add(param);
+
+            param = new MySqlParameter("kod", MySqlDbType.String);
+            param.Value = tbKod.Text;
+            cmd.Parameters.Add(param);
+
+            param = new MySqlParameter("miejscowosc", MySqlDbType.String);
+            param.Value = tbMiejscowosc.Text;
+            cmd.Parameters.Add(param);
+
+            cmd.ExecuteNonQuery();
+
+            cmd.CommandText = "INSERT INTO zamowienia_produkty(zamowienieID, produktID, ilosc) SELECT @zamowienieID, produktID, ilosc FROM koszyk_produkt WHERE koszykID = @koszykID;";
+
+            param = new MySqlParameter("koszykID", MySqlDbType.String);
+            param.Value = Request.Cookies["basket"].Value;
+            cmd.Parameters.Add(param);
+
+            cmd.ExecuteNonQuery();
+
+            cmd.CommandText = "DELETE FROM koszyk_produkt WHERE koszykID = @koszykID;";
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+
+            Panel2.Visible = false;
+            Panel3.Visible = true;
         }
     }
 }

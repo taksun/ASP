@@ -346,4 +346,7 @@
             </ItemTemplate>
         </asp:DataList>
     </asp:Panel>
+    <asp:Panel ID="Panel3" Visible="false" runat="server">
+        Zamówienie zostało złożone!
+        </asp:Panel>
 </asp:Content>
