@@ -6,8 +6,8 @@
 
     <div id="Div1">
 <asp:DataList ID="DataListProdukty" runat="server" 
-            DataSourceID="SqlDataSourceProdukty" DataKeyField="produktID"> 
-           
+            DataSourceID="SqlDataSourceProdukty" DataKeyField="produktID" >
+            
             <FooterTemplate>
                 </table>
                 
@@ -30,6 +30,8 @@
                         <td><%# Eval("producent") %></td>
                         <td><%# Eval("cena") %></td>
                         <td><%# Eval("opis") %></td>
+                        <td><asp:Button ID="ButtonDoKoszyka" runat="server" Text="Dodaj do koszyka" 
+                                CommandName="Update" /></td>
                     </tr>                  
 
             </ItemTemplate>
@@ -39,13 +41,16 @@
         <asp:SqlDataSource ID="SqlDataSourceProdukty" runat="server" 
             ConnectionString="<%$ ConnectionStrings:CS %>" 
             ProviderName="<%$ ConnectionStrings:CS.ProviderName %>" 
-            
-            
-                    SelectCommand="SELECT p.nazwa, p.cena, p.produktID, p.opis, pr.nazwa as producent FROM produkty p, producenci pr WHERE (p.produktID = @produktID) AND (pr.producentID = p.producent)"> 
-         
+            SelectCommand="SELECT p.nazwa, p.cena, p.produktID, p.opis, pr.nazwa as producent FROM produkty p, producenci pr WHERE (p.produktID = @produktID) AND (pr.producentID = p.producent)"
+            UpdateCommand="UPDATE koszyk_produkt SET ilosc = ilosc+1 WHERE koszykID = @koszykID AND produktID = @produktID">
+           
             <SelectParameters>
                 <asp:Parameter DefaultValue="" Name="produktID" Type="Int32" />
             </SelectParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="koszykID" Type="String" />
+                <asp:Parameter Name="produktID" Type="Int32" />
+            </UpdateParameters>
            
         </asp:SqlDataSource>
       
