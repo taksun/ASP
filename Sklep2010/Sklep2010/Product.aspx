@@ -13,8 +13,6 @@
                 
             </FooterTemplate>
             <HeaderTemplate>
-                <% if (DataListProdukty.Items.Count > 0)
-                   { %>
                 <table>
                     <tr>
                         <th style="width:100px;"></th>
@@ -23,7 +21,6 @@
                         <th style="width:100px;">Cena</th>
                         <th style="width:100px;">Opis</th>
                     </tr>  
-                <% } %>
             </HeaderTemplate>
             <ItemTemplate>
                 
@@ -44,7 +41,7 @@
             ProviderName="<%$ ConnectionStrings:CS.ProviderName %>" 
             
             
-                    SelectCommand="SELECT p.nazwa, p.cena, p.produktID, p.opis pr.nazwa as producent FROM produkty p, producenci pr WHERE (p.produktID = @produktID) AND (pr.producentID = p.producent)"> 
+                    SelectCommand="SELECT p.nazwa, p.cena, p.produktID, p.opis, pr.nazwa as producent FROM produkty p, producenci pr WHERE (p.produktID = @produktID) AND (pr.producentID = p.producent)"> 
          
             <SelectParameters>
                 <asp:Parameter DefaultValue="" Name="produktID" Type="Int32" />
