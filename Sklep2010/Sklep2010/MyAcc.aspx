@@ -18,8 +18,21 @@
         </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div style="width: 400px; margin: auto;">
-     Witaj <% Response.Write(((Sklep2010.User)Session["user"]).getImieNazwisko()); %>
+<div id="sidebar1">
+        <h2>Moje Konto</h2>
+    <asp:BulletedList ID="BulletedList1" runat="server" CssClass="list-style2" DisplayMode="HyperLink">
+        <asp:ListItem Value="~/MyAcc.aspx?page=1">Moje Zamówienia</asp:ListItem>
+        <asp:ListItem Value="~/MyAcc.aspx?page=2">Profil</asp:ListItem>
+        <asp:ListItem Value="~/MyAcc.aspx?page=3">Zmiana hasła</asp:ListItem>
+        <asp:ListItem Value="~/MyAcc.aspx?page=4">Zmiana emaila</asp:ListItem>
+    </asp:BulletedList>
+
+    </div>
+    <div id="content2">
+    Witaj <% Response.Write(((Sklep2010.User)Session["user"]).getImieNazwisko()); %>
+        <asp:Panel ID="PanelMyAcc" Visible="false" runat="server">
+        </asp:Panel>
+        <asp:Panel ID="PanelProfil" Visible="false" runat="server">
         <table class="auto-style1">
             <tr>
                 <td class="auto-style3">Email:</td>
@@ -93,5 +106,12 @@
                 </td>
             </tr>
         </table>
+        </asp:Panel>
+        <asp:Panel ID="PanelZamowienia" Visible="false" runat="server">
+        </asp:Panel>
+        <asp:Panel ID="PanelZmianaPass" Visible="false" runat="server">
+        </asp:Panel>
+        <asp:Panel ID="PanelZmianaEmail" Visible="false" runat="server">
+        </asp:Panel>
     </div>
 </asp:Content>

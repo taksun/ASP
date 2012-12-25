@@ -13,7 +13,31 @@ namespace Sklep2010
         {
             if (Session["user"] == null)
             {
-                Response.Redirect("~/Basket.aspx");
+                Response.Redirect("~/Default.aspx");
+            }
+
+            if (Request.Params["page"] != null)
+            {
+                if (Request.Params["page"].Equals("1"))
+                {
+                    PanelZamowienia.Visible = true;
+                }
+                else if (Request.Params["page"].Equals("2"))
+                {
+                    PanelProfil.Visible = true;
+                }
+                else if (Request.Params["page"].Equals("3"))
+                {
+                    PanelZmianaPass.Visible = true;
+                }
+                else if (Request.Params["page"].Equals("4"))
+                {
+                    PanelZmianaEmail.Visible = true;
+                }
+            }
+            else
+            {
+                PanelMyAcc.Visible = true;
             }
         }
     }
