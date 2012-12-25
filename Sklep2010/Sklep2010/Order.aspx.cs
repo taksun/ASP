@@ -11,7 +11,9 @@ namespace Sklep2010
     public partial class Order : System.Web.UI.Page
     {
         public Decimal suma = 0.0M;
+        public Decimal wysylka = 30.0M;
         public User usr;
+        public DropDownList ddlwys;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,6 +28,7 @@ namespace Sklep2010
             }
 
             usr = (User)Session["user"];
+
         }
 
         protected void DataListOrder_ItemDataBound(object sender, DataListItemEventArgs e)
@@ -39,6 +42,32 @@ namespace Sklep2010
         protected void ButtonAnuluj_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Default.aspx");
+        }
+
+        protected void ButtonZamow_Click(object sender, EventArgs e)
+        {
+            Panel1.Visible = false;
+            Panel2.Visible = true;
+            if (ddlwys.SelectedItem.Value.Equals("Kurier"))
+            {
+                suma += 30;
+            }
+            else
+            {
+                suma += 15;
+            }
+            Panel2.DataBind();
+        }
+
+        protected void ButtonWstecz_Click(object sender, EventArgs e)
+        {
+            Panel1.Visible = true;
+            Panel2.Visible = false;
+        }
+
+        protected void DropDownListWysylka_OnLoad(object sender, EventArgs e)
+        {
+            ddlwys = (DropDownList)sender;
         }
     }
 }
