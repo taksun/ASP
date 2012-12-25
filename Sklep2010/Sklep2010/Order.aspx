@@ -37,14 +37,15 @@
             onitemdatabound="DataListOrder_ItemDataBound">
 
             <FooterTemplate>
-
             <% if (DataListOrder.Items.Count > 0)
                { %>
 
                 <tr>
-                <td colspan="4" align="right">Razem</td>
-                <td align="center">
-                    <asp:Label ID="LabelSuma" runat="server" Text='<%# suma.ToString("F") %>'></asp:Label></td>
+                <td class="auto-style5">
+                    <%# Eval("nazwa") %>Razem</td>
+                <td class="auto-style4">
+                    <asp:Label ID="LabelSuma" runat="server" Text='<%# suma.ToString("F") %>'></asp:Label>
+                    </td>
                 <td>&nbsp;</td>
             <tr>
                 <td colspan="5" align="center">
@@ -52,19 +53,33 @@
                     <table>
             <tr>
                 <td>Imie i Nazwisko</td>
-                <td><asp:TextBox ID="TextBoxImieNazwisko" runat="server" Text='<%# usr.getImieNazwisko() %>'></asp:TextBox></td> 
+                <td><asp:TextBox ID="TextBoxImieNazwisko" runat="server" Text='<%# usr.getImieNazwisko() %>'></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                        ErrorMessage="Musisz podac Imię i Nazwisko" Text="*" ToolTip="Musisz podac Imię i Nazwisko" ValidationGroup="order" ControlToValidate="TextBoxImieNazwisko" Display="Dynamic"></asp:RequiredFieldValidator>
+                </td> 
             </tr>
             <tr>
                 <td>Adres</td>
-                <td><asp:TextBox ID="TextBoxAdres" runat="server" Text='<%# usr.getAdres() %>'></asp:TextBox></td> 
+                <td><asp:TextBox ID="TextBoxAdres" runat="server" Text='<%# usr.getAdres() %>'></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+                        ErrorMessage="Musisz podać Adres!" Text="*" Display="Dynamic" ValidationGroup="order" ControlToValidate="TextBoxAdres" ToolTip="Musisz podać Adres!"></asp:RequiredFieldValidator>
+                </td> 
             </tr>
             <tr>
                 <td>Kod Pocztowy</td>
-                <td><asp:TextBox ID="TextBoxKod" runat="server" Text='<%# usr.getKod() %>'></asp:TextBox></td> 
+                <td><asp:TextBox ID="TextBoxKod" runat="server" Text='<%# usr.getKod() %>'></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
+                        ErrorMessage="Musisz podać Kod pocztowy!" ValidationGroup="order" ToolTip="Musisz podać Kod pocztowy!" ControlToValidate="TextBoxKod" Text="*" Display="Dynamic"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
+                        ErrorMessage="Podałeś błędny kod pocztowy!" ValidationGroup="order" ToolTip="Podałeś błędny kod pocztowy!" ControlToValidate="TextBoxKod" Display="Dynamic" Text="*" ValidationExpression="\d{2}-\d{3}"></asp:RegularExpressionValidator>
+                </td> 
             </tr>
             <tr>
                 <td>Miejscowosc</td>
-                <td><asp:TextBox ID="TextBoxMiejscowosc" runat="server" Text='<%# usr.getMiejscowosc() %>'></asp:TextBox></td> 
+                <td><asp:TextBox ID="TextBoxMiejscowosc" runat="server" Text='<%# usr.getMiejscowosc() %>'></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
+                        ErrorMessage="Musisz podać miejscowość!" ValidationGroup="order" ControlToValidate="TextBoxMiejscowosc" ToolTip="Musisz podać miejscowość!" Display="Dynamic" Text="*"></asp:RequiredFieldValidator>
+                </td> 
             </tr>
         </table>
                 </td>
@@ -75,14 +90,19 @@
                     <asp:Button ID="ButtonAnuluj" OnClick="ButtonAnuluj_Click" runat="server" Text="Anuluj" />
                 </td>
                 <td>
-                    <asp:Button ID="ButtonZamow" runat="server" Text="Złóż zamówienie"/>
+                    <asp:Button ID="ButtonZamow" runat="server" Text="Złóż zamówienie" ValidationGroup="order" />
                 </td>
+            </tr>
+            <tr>
+            <td colspan="5" align="center">
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ValidationGroup="order" />
+            </td>
             </tr>
         </table>
 
         
-
         <% } %>
+            
 
             </FooterTemplate>
 
