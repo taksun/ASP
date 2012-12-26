@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Czas wygenerowania: 25 Gru 2012, 17:22
+-- Czas wygenerowania: 26 Gru 2012, 14:43
 -- Wersja serwera: 5.5.27
 -- Wersja PHP: 5.4.7
 
@@ -53,13 +53,6 @@ CREATE TABLE IF NOT EXISTS `koszyk` (
   PRIMARY KEY (`koszykID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
---
--- Zrzut danych tabeli `koszyk`
---
-
-INSERT INTO `koszyk` (`koszykID`, `data`) VALUES
-('01cdacb8-ea62-4eb8-a17b-9a41bfe2b3c4', '2012-12-25 15:18:54');
-
 -- --------------------------------------------------------
 
 --
@@ -71,13 +64,6 @@ CREATE TABLE IF NOT EXISTS `koszyk_produkt` (
   `produktID` int(11) NOT NULL,
   `ilosc` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
-
---
--- Zrzut danych tabeli `koszyk_produkt`
---
-
-INSERT INTO `koszyk_produkt` (`koszykID`, `produktID`, `ilosc`) VALUES
-('c9eb872b-5939-4f70-9cfd-8b97a3b3e907', 1, 5);
 
 -- --------------------------------------------------------
 
@@ -149,7 +135,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`userID`, `login`, `pass`, `imie`, `nazwisko`, `adres`, `kod`, `miejscowosc`) VALUES
-(1, 'asd@asd.pl', 'asdqwe123', 'asd', 'asd', 'asdasdasd 12/213', '12-123', 'Asdland'),
+(1, 'asd@asd.pl', 'asdasdasd', 'asdasd', 'asd aaa asd', 'asdasdasd 12/21', '12-123', 'Asdland'),
 (2, 'asd@asd.ru', 'asdasdasd', 'asd', 'asd', 'asd', '15-123', 'asd');
 
 -- --------------------------------------------------------
@@ -166,7 +152,7 @@ CREATE TABLE IF NOT EXISTS `zamowienia` (
   `userID` int(11) NOT NULL,
   `status` varchar(50) COLLATE utf8_polish_ci NOT NULL DEFAULT 'Oczekiwanie na płatność',
   PRIMARY KEY (`zamowienieID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=6 ;
 
 --
 -- Zrzut danych tabeli `zamowienia`
@@ -174,7 +160,8 @@ CREATE TABLE IF NOT EXISTS `zamowienia` (
 
 INSERT INTO `zamowienia` (`zamowienieID`, `data`, `wysylka`, `platnosc`, `userID`, `status`) VALUES
 (3, '2012-12-25 16:19:04', 'Kurier', 'Przelew', 1, 'Oczekiwanie na płatność'),
-(4, '2012-12-25 16:20:03', 'Kurier', 'Przelew', 1, 'Oczekiwanie na płatność');
+(4, '2012-12-25 16:20:03', 'Kurier', 'Przelew', 1, 'Oczekiwanie na płatność'),
+(5, '2012-12-26 13:31:54', 'Poczta Polska', 'Pay4U', 1, 'Oczekiwanie na płatność');
 
 -- --------------------------------------------------------
 
@@ -196,7 +183,8 @@ INSERT INTO `zamowienia_produkty` (`zamowienieID`, `produktID`, `ilosc`) VALUES
 (3, 1, 11),
 (3, 3, 1),
 (4, 1, 11),
-(4, 3, 1);
+(4, 3, 1),
+(5, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -218,7 +206,8 @@ CREATE TABLE IF NOT EXISTS `zamowienia_wysylka` (
 
 INSERT INTO `zamowienia_wysylka` (`zamowienieID`, `imieNazwisko`, `adres`, `kod`, `miejscowosc`) VALUES
 (3, 'asd asd', 'asdasdasd 12/213', '12-123', 'Asdland'),
-(4, 'asd asd', 'asdasdasd 12/213', '12-123', 'Asdland');
+(4, 'asd asd', 'asdasdasd 12/213', '12-123', 'Asdland'),
+(5, 'asdasd asd aaa asd', 'asdasdasd 12/21', '12-123', 'Asdland');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
