@@ -105,7 +105,6 @@ namespace Sklep2010
         {
             MySqlConnection conn;
             MySqlCommand cmd;
-            MySqlDataReader rdr;
             MySqlParameter param;
 
             conn = new MySqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["CS"].ConnectionString);
