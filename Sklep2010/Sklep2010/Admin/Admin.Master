@@ -5,12 +5,37 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <style type="text/css">
+        .head 
+        {
+            font-size: larger;
+            margin-left: auto;
+            margin-right: auto;
+            width: 800px;
+        }
+        .content
+        {
+            margin-left: auto;
+            margin-right: auto;
+            width: 800px;
+        }
+    </style>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
+    <div class="head">
+        <h1>PANEL ADMINISTRACYJNY</h1><br />
+        <asp:panel runat="server" ID="PanelMenu" Visible="false">
+            <asp:hyperlink runat="server" NavigateUrl="~/Admin/Products.aspx">Produkty</asp:hyperlink>
+            <asp:hyperlink runat="server" NavigateUrl="~/Admin/Users.aspx">Użytkownicy</asp:hyperlink>
+            <asp:hyperlink runat="server" NavigateUrl="~/Admin/Default.aspx?action=logout">Wyloguj</asp:hyperlink>
+            <br />
+            <br />
+        </asp:panel>
+    </div>
     <form id="form1" runat="server">
-    <div>
+    <div class="content">
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         
         </asp:ContentPlaceHolder>

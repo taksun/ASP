@@ -11,7 +11,20 @@ namespace Sklep2010.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.Params["action"] != null)
+            {
+                if (Request.Params["action"] == "logout")
+                {
+                    Session.RemoveAll();
+                    Session.Abandon();
+                    Response.Redirect("~/Admin/Default.aspx");
+                }
+            }
 
+            if (Session["admin"] != null)
+            {
+                PanelMenu.Visible = true;
+            }
         }
     }
 }
