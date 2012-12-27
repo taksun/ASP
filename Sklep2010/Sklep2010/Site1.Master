@@ -117,6 +117,7 @@ Released   : 20120818
 			<p>Copyright (c) 2012 Sitename.com</p>
 			<p>All rights reserved.</p>
 			<p>Design by <a href="http://www.freecsstemplates.org">FCT</a>. Photos by <a href="http://fotogrph.com/">Fotogrph</a>.</p>
+            <p>Ilość odwiedzin strony: <% Response.Write(Application["cnt"]); %></p>
 		</div>
 		<div id="column2">
 			<h2>Rhoncus volutpat</h2>

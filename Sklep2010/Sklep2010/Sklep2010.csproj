@@ -55,6 +55,7 @@
   <ItemGroup>
     <Content Include="Admin\Category.aspx" />
     <Content Include="Admin\Producents.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="MyAcc.aspx" />
     <Content Include="Admin\Default.aspx" />
     <Content Include="Admin\Products.aspx" />
@@ -101,6 +102,9 @@
     </Compile>
     <Compile Include="Admin\Producents.aspx.designer.cs">
       <DependentUpon>Producents.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="MyAcc.aspx.cs">
       <DependentUpon>MyAcc.aspx</DependentUpon>
