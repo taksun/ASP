@@ -25,16 +25,25 @@ namespace Sklep2010
             {
                 DataRowView drv = dv[0];
 
-                Session["user"] = new User(int.Parse(drv["userID"].ToString()));
-
-
-                if (Request.Params["order"]!=null)
+                if (drv["blokada"].ToString().Equals("True"))
                 {
-                    Response.Redirect("~/Order.aspx");
+                    LInfo.Text = "To konto jest zablokowane!";
+                    LInfo.Visible = true;
                 }
                 else
                 {
-                    Response.Redirect("~/Default.aspx");
+
+                    Session["user"] = new User(int.Parse(drv["userID"].ToString()));
+
+
+                    if (Request.Params["order"] != null)
+                    {
+                        Response.Redirect("~/Order.aspx");
+                    }
+                    else
+                    {
+                        Response.Redirect("~/Default.aspx");
+                    }
                 }
             }
             else

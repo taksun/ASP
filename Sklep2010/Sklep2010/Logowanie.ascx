@@ -63,7 +63,7 @@
 <asp:SqlDataSource ID="SqlDataSourceLogin" runat="server" 
     ConnectionString="<%$ ConnectionStrings:CS %>" 
     ProviderName="<%$ ConnectionStrings:CS.ProviderName %>" 
-    SelectCommand="SELECT userID FROM users WHERE ((login = @login) AND (pass = @pass));">
+    SelectCommand="SELECT userID, blokada FROM users WHERE ((login = @login) AND (pass = @pass));">
     <SelectParameters>
         <asp:ControlParameter ControlID="TextBoxLogin" Name="login" PropertyName="Text" 
             Type="String" />

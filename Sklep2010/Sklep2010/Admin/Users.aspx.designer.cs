@@ -13,21 +13,21 @@ namespace Sklep2010.Admin {
     public partial class Users {
         
         /// <summary>
-        /// ButtonUsun control.
+        /// SqlDataSourceUsers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonUsun;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceUsers;
         
         /// <summary>
-        /// ButtonZablokuj control.
+        /// DataListUsers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonZablokuj;
+        protected global::System.Web.UI.WebControls.DataList DataListUsers;
     }
 }
