@@ -8,32 +8,35 @@
 <asp:DataList ID="DataListProdukty" runat="server" 
             DataSourceID="SqlDataSourceProdukty" DataKeyField="produktID" 
             onupdatecommand="DataListProdukty_UpdateCommand">
-            <FooterTemplate>
-                </table>
-                
-            </FooterTemplate>
-            <HeaderTemplate>
-                <table>
-                    <tr>
-                        <th style="width:100px;"></th>
-                        <th style="width:100px;">Nazwa</th>
-                        <th style="width:100px;">Producent</th>
-                        <th style="width:100px;">Cena</th>
-                        <th style="width:100px;">Opis</th>
-                    </tr>  
-            </HeaderTemplate>
+        
             <ItemTemplate>
-                
-                    <tr>
-                        <td><%# Eval("produktID") %></td>
-                        <td><%# Eval("nazwa") %></td>
-                        <td><%# Eval("producent") %></td>
-                        <td><%# Eval("cena") %></td>
-                        <td><%# Eval("opis") %></td>
-                        <td><asp:Button ID="ButtonDoKoszyka" runat="server" Text="Dodaj do koszyka" 
-                                CommandName="Update" /></td>
-                    </tr>                  
-
+                <table >               
+                     <tr>                   
+                          <th style="width:100px;">Obrazek</th>   
+                          <th style="width:100px;">Nazwa</th>    
+                          <td><%# Eval("nazwa") %></td>                  
+                    </tr> 
+                    <tr>  
+                        <td>&nbsp;</td>    
+                        <th style="width:100px;">Producent</th>   
+                        <td><%# Eval("producent") %></td>                      
+                    </tr>      
+                    <tr>                     
+                        <td>&nbsp;</td>         
+                        <th style="width:100px;">Cena</th>   
+                        <td><%# Eval("cena") %></td>                                      
+                    </tr> 
+                  <tr>
+                  <td>&nbsp;</td> 
+                  <th style="width:100px;">Opis</th>
+                  <td><%# Eval("opis") %></td>
+                  </tr> 
+                  <tr>
+                  <td>&nbsp;</td> 
+                  <td>&nbsp;</td> 
+                  <td><asp:Button ID="ButtonDoKoszyka" runat="server" Text="Dodaj do koszyka" CommandName="Update" /></td>
+                  </tr>                               
+                   </table>                   
             </ItemTemplate>
  </asp:DataList> 
        
