@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Czas wygenerowania: 26 Gru 2012, 14:43
+-- Czas wygenerowania: 27 Gru 2012, 18:27
 -- Wersja serwera: 5.5.27
 -- Wersja PHP: 5.4.7
 
@@ -53,6 +53,13 @@ CREATE TABLE IF NOT EXISTS `koszyk` (
   PRIMARY KEY (`koszykID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
+--
+-- Zrzut danych tabeli `koszyk`
+--
+
+INSERT INTO `koszyk` (`koszykID`, `data`) VALUES
+('18ae17f3-a117-4818-8d91-3cf05a3dfdd5', '2012-12-27 11:51:55');
+
 -- --------------------------------------------------------
 
 --
@@ -64,6 +71,13 @@ CREATE TABLE IF NOT EXISTS `koszyk_produkt` (
   `produktID` int(11) NOT NULL,
   `ilosc` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `koszyk_produkt`
+--
+
+INSERT INTO `koszyk_produkt` (`koszykID`, `produktID`, `ilosc`) VALUES
+('18ae17f3-a117-4818-8d91-3cf05a3dfdd5', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -101,16 +115,17 @@ CREATE TABLE IF NOT EXISTS `produkty` (
   `opis` text COLLATE utf8_polish_ci NOT NULL,
   `ilosc` int(11) NOT NULL,
   PRIMARY KEY (`produktID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=6 ;
 
 --
 -- Zrzut danych tabeli `produkty`
 --
 
 INSERT INTO `produkty` (`produktID`, `nazwa`, `producent`, `kategoria`, `cena`, `opis`, `ilosc`) VALUES
-(1, 'Laptop Acer', 1, 1, 1500, 'Jakiś tam laptop acera', 10),
+(1, 'Laptop Acer', 1, 1, 0, '', 0),
 (2, 'Laptop HP', 2, 1, 1700, 'Jakiś tam laptop HP', 10),
-(3, 'Laptop ASUS', 3, 1, 1600, 'Jakiś tam laptop ASUS', 10);
+(3, 'Laptop ASUS', 3, 1, 1600, 'Jakiś tam laptop ASUS', 10),
+(4, 'Laptop ASUS v2', 3, 1, 2199, 'Ulepszona wersja popularnego laptopa Acer!!!', 10);
 
 -- --------------------------------------------------------
 
@@ -127,6 +142,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `adres` varchar(30) COLLATE utf8_polish_ci NOT NULL,
   `kod` varchar(6) COLLATE utf8_polish_ci NOT NULL,
   `miejscowosc` varchar(20) COLLATE utf8_polish_ci NOT NULL,
+  `blokada` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`userID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=3 ;
 
@@ -134,9 +150,25 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Zrzut danych tabeli `users`
 --
 
-INSERT INTO `users` (`userID`, `login`, `pass`, `imie`, `nazwisko`, `adres`, `kod`, `miejscowosc`) VALUES
-(1, 'asd@asd.pl', 'asdasdasd', 'asdasd', 'asd aaa asd', 'asdasdasd 12/21', '12-123', 'Asdland'),
-(2, 'asd@asd.ru', 'asdasdasd', 'asd', 'asd', 'asd', '15-123', 'asd');
+INSERT INTO `users` (`userID`, `login`, `pass`, `imie`, `nazwisko`, `adres`, `kod`, `miejscowosc`, `blokada`) VALUES
+(1, 'asd@asd.pl', 'asdasdasd', 'asdasd', 'asd aaa asd', 'asdasdasd 12/21', '12-123', 'Asdland', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `ustawienia`
+--
+
+CREATE TABLE IF NOT EXISTS `ustawienia` (
+  `licznik` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `ustawienia`
+--
+
+INSERT INTO `ustawienia` (`licznik`) VALUES
+(1);
 
 -- --------------------------------------------------------
 
