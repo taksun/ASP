@@ -27,6 +27,8 @@
     <div class="head">
         <h1>PANEL ADMINISTRACYJNY</h1><br />
         <asp:panel runat="server" ID="PanelMenu" Visible="false">
+            <asp:hyperlink runat="server" NavigateUrl="~/Admin/Category.aspx">Kategorie</asp:hyperlink>
+            <asp:hyperlink runat="server" NavigateUrl="~/Admin/Producents.aspx">Producenci</asp:hyperlink>
             <asp:hyperlink runat="server" NavigateUrl="~/Admin/Products.aspx">Produkty</asp:hyperlink>
             <asp:hyperlink runat="server" NavigateUrl="~/Admin/Users.aspx">Użytkownicy</asp:hyperlink>
             <asp:hyperlink runat="server" NavigateUrl="~/Admin/Default.aspx?action=logout">Wyloguj</asp:hyperlink>

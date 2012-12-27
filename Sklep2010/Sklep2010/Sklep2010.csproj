@@ -53,6 +53,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\Category.aspx" />
+    <Content Include="Admin\Producents.aspx" />
     <Content Include="MyAcc.aspx" />
     <Content Include="Admin\Default.aspx" />
     <Content Include="Admin\Products.aspx" />
@@ -86,6 +88,20 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\Category.aspx.cs">
+      <DependentUpon>Category.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Category.aspx.designer.cs">
+      <DependentUpon>Category.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Producents.aspx.cs">
+      <DependentUpon>Producents.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Producents.aspx.designer.cs">
+      <DependentUpon>Producents.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MyAcc.aspx.cs">
       <DependentUpon>MyAcc.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
