@@ -13,22 +13,22 @@ namespace Sklep2010.Admin {
     public partial class Products {
         
         /// <summary>
-        /// ButtonEdytuj control.
+        /// SqlDataSourceProdukty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonEdytuj;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceProdukty;
         
         /// <summary>
-        /// ButtonUsun control.
+        /// DataListProdukty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonUsun;
+        protected global::System.Web.UI.WebControls.DataList DataListProdukty;
         
         /// <summary>
         /// TextBoxNazwa control.
@@ -40,6 +40,24 @@ namespace Sklep2010.Admin {
         protected global::System.Web.UI.WebControls.TextBox TextBoxNazwa;
         
         /// <summary>
+        /// DropDownListProducent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListProducent;
+        
+        /// <summary>
+        /// Producent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource Producent;
+        
+        /// <summary>
         /// DropDownListKategoria control.
         /// </summary>
         /// <remarks>
@@ -49,6 +67,15 @@ namespace Sklep2010.Admin {
         protected global::System.Web.UI.WebControls.DropDownList DropDownListKategoria;
         
         /// <summary>
+        /// Kategorie control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource Kategorie;
+        
+        /// <summary>
         /// TextBoxCena control.
         /// </summary>
         /// <remarks>
@@ -56,6 +83,15 @@ namespace Sklep2010.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBoxCena;
+        
+        /// <summary>
+        /// TextBoxIlosc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxIlosc;
         
         /// <summary>
         /// TextBoxOpis control.
