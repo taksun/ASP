@@ -13,7 +13,7 @@
             <ItemTemplate>
                 <table >               
                      <tr>                   
-                          <th style="width:100px;">Obrazek</th>   
+                          <th style="width:100px;"></th>   
                           <th style="width:100px;">Nazwa</th>    
                           <td><%# Eval("nazwa") %></td>                  
                     </tr> 
@@ -28,7 +28,7 @@
                         <td><%# Eval("cena") %></td>                                      
                     </tr> 
                   <tr>
-                  <td>&nbsp;</td> 
+                  <td><asp:Image ID="ImageObrazek" runat="server" ImageUrl="~/images/No_image.jpg"></asp:Image></td> 
                   <th style="width:100px;">Opis</th>
                   <td><%# Eval("opis") %></td>
                   </tr> 

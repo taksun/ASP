@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Czas wygenerowania: 28 Gru 2012, 14:51
+-- Czas wygenerowania: 28 Gru 2012, 15:38
 -- Wersja serwera: 5.5.27
 -- Wersja PHP: 5.4.7
 
@@ -116,6 +116,24 @@ INSERT INTO `produkty` (`produktID`, `nazwa`, `producent`, `kategoria`, `cena`, 
 -- --------------------------------------------------------
 
 --
+-- Struktura tabeli dla tabeli `produkty_obrazki`
+--
+
+CREATE TABLE IF NOT EXISTS `produkty_obrazki` (
+  `produktID` int(11) NOT NULL,
+  `obrazek` varchar(50) COLLATE utf8_polish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `produkty_obrazki`
+--
+
+INSERT INTO `produkty_obrazki` (`produktID`, `obrazek`) VALUES
+(1, 'Laptop-Acer-z-linii-Ethos.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Struktura tabeli dla tabeli `users`
 --
 
@@ -174,7 +192,7 @@ CREATE TABLE IF NOT EXISTS `ustawienia` (
 --
 
 INSERT INTO `ustawienia` (`licznik`) VALUES
-(30);
+(39);
 
 -- --------------------------------------------------------
 

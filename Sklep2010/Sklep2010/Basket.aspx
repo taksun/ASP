@@ -35,7 +35,7 @@
             ProviderName="<%$ ConnectionStrings:CS.ProviderName %>" 
             
             
-            SelectCommand="SELECT p.produktID, p.nazwa, k.nazwa as kategoria, p.cena, kp.ilosc FROM produkty p, koszyk_produkt kp, kategorie k WHERE p.produktID = kp.produktID AND p.kategoria = k.kategoriaID AND kp.koszykID = @koszykID" 
+            SelectCommand="SELECT p.produktID, p.nazwa, k.nazwa as kategoria, k.kategoriaID, p.cena, kp.ilosc FROM produkty p, koszyk_produkt kp, kategorie k WHERE p.produktID = kp.produktID AND p.kategoria = k.kategoriaID AND kp.koszykID = @koszykID" 
             
             DeleteCommand="DELETE FROM koszyk_produkt WHERE koszykID = @koszykID AND produktID = @produktID" 
             InsertCommand="DELETE FROM koszyk_produkt WHERE koszykID = @koszykID" 
@@ -110,10 +110,10 @@
             <ItemTemplate>
                 <tr>
                 <td class="auto-style5">
-                    <%# Eval("nazwa") %>
+                    <a href='Product.aspx?id=<%# Eval("produktID") %>'><%# Eval("nazwa") %></a>
                 </td>
                 <td class="auto-style4">
-                    <%# Eval("kategoria") %>
+                    <a href='Default.aspx?category=<%# Eval("kategoriaID") %>'><%# Eval("kategoria") %></a>
                 </td>
                 <td align="center" class="auto-style6">
                     <asp:Label ID="LabelCena" runat="server" Text='<%# Eval("cena") %>'></asp:Label>

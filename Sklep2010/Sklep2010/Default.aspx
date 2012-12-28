@@ -44,7 +44,7 @@
             <ItemTemplate>
                 
                     <tr>
-                        <td><a href='Product.aspx?id=<%# Eval("produktID") %>'>PIC</a></td>
+                        <td><a href='Product.aspx?id=<%# Eval("produktID") %>'><asp:Image ID="ImageObrazek" runat="server" ImageUrl="~/images/No_image.jpg" Width="100" Height="100"></asp:Image></a></td>
                         <td><a href='Product.aspx?id=<%# Eval("produktID") %>'><%# Eval("nazwa") %></a></td>
                         <td><%# Eval("producent") %></td>
                         <td><%# Eval("cena") %></td>
