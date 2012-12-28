@@ -35,6 +35,33 @@ namespace Sklep2010
 
             usr = (User)Session["user"];
 
+            DataView dv = (DataView)SqlDataSourceOrder.Select(DataSourceSelectArguments.Empty);
+
+            Boolean czyil = false;
+
+            if (dv.Count == 0)
+            {
+                Response.Redirect("~/Default.aspx");
+            }
+            else
+            {
+                foreach (DataRowView drv in dv)
+                {
+                    int magazyn = int.Parse(drv["ileMagazyn"].ToString());
+                    int ilosc = int.Parse(drv["ilosc"].ToString());
+                    if (ilosc > magazyn)
+                    {
+                        czyil = true;
+                        break;
+                    }
+                }
+            }
+
+            if (czyil)
+            {
+                Panel1.Visible = false;
+                Panel4.Visible = true;
+            }
         }
 
         protected void DataListOrder_ItemDataBound(object sender, DataListItemEventArgs e)
@@ -160,6 +187,10 @@ namespace Sklep2010
 
             cmd.ExecuteNonQuery();
 
+            cmd.CommandText = "UPDATE produkty p, koszyk_produkt k SET p.ilosc = p.ilosc - k.ilosc WHERE k.koszykID = @koszykID AND p.produktID = k.produktID;";
+
+            cmd.ExecuteNonQuery();
+
             cmd.CommandText = "DELETE FROM koszyk_produkt WHERE koszykID = @koszykID;";
 
             cmd.ExecuteNonQuery();
@@ -168,6 +199,11 @@ namespace Sklep2010
 
             Panel2.Visible = false;
             Panel3.Visible = true;
+        }
+
+        protected void ButtonPowrot_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Basket.aspx");
         }
     }
 }

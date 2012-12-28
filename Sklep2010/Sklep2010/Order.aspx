@@ -28,7 +28,7 @@
             ProviderName="<%$ ConnectionStrings:CS.ProviderName %>" 
             
     
-            SelectCommand="SELECT p.produktID, p.nazwa, k.nazwa as kategoria, p.cena, kp.ilosc FROM produkty p, koszyk_produkt kp, kategorie k WHERE p.produktID = kp.produktID AND p.kategoria = k.kategoriaID AND kp.koszykID = @koszykID">
+            SelectCommand="SELECT p.produktID, p.nazwa, k.nazwa as kategoria, p.cena, kp.ilosc, p.ilosc as ileMagazyn FROM produkty p, koszyk_produkt kp, kategorie k WHERE p.produktID = kp.produktID AND p.kategoria = k.kategoriaID AND kp.koszykID = @koszykID">
             <SelectParameters>
                 <asp:CookieParameter CookieName="basket" Name="koszykID" />
             </SelectParameters>
@@ -348,5 +348,51 @@
     </asp:Panel>
     <asp:Panel ID="Panel3" Visible="false" runat="server">
         Zamówienie zostało złożone!
+        </asp:Panel>
+    <asp:Panel ID="Panel4" Visible="false" runat="server">
+        Nie posiadamy takich ilości produktów w magazynie!<br />
+        <asp:DataList ID="DataListIlosci" runat="server" DataSourceID="SqlDataSourceOrder">
+            <FooterTemplate>
+                    <tr>
+                        <td colspan="5" align="center">
+                            <asp:Button ID="ButtonPowrot" runat="server" Text="Powrót" onclick="ButtonPowrot_Click" /></td>
+                        </td>
+                    </tr>
+                </table>
+            </FooterTemplate>
+            <HeaderTemplate>
+                <table>
+                    <tr>
+                        <th class="auto-style5">
+                            Nazwa</th>
+                        <th class="auto-style4">
+                            Kategoria</th>
+                        <th class="auto-style6">
+                            Cena</th>
+                        <th class="auto-style7">
+                            Ilość</th>
+                        <th>Ilość w magazynie</th>
+                    </tr>
+            </HeaderTemplate>
+            <ItemTemplate>
+                <tr>
+                    <td class="auto-style5">
+                        <%# Eval("nazwa") %>
+                    </td>
+                    <td class="auto-style4">
+                        <%# Eval("kategoria") %>
+                    </td>
+                    <td align="center" class="auto-style6">
+                        <%# Eval("cena") %></asp:Label>
+                    </td>
+                    <td align="center" class="auto-style7">
+                        <%# Eval("ilosc") %></asp:Label>
+                    </td>
+                    <td align="center">
+                        <%# Eval("ileMagazyn") %>
+                    </td>
+                </tr>
+            </ItemTemplate>
+        </asp:DataList>
         </asp:Panel>
 </asp:Content>

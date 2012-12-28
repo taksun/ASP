@@ -49,6 +49,7 @@ namespace Sklep2010
 
         protected void ButtonZamow_Click(object sender, EventArgs e)
         {
+            DataListKoszyk_UpdateCommand(null,null);
             Response.Redirect("~/Order.aspx");
         }
 
