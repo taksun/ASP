@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Czas wygenerowania: 28 Gru 2012, 14:01
+-- Czas wygenerowania: 28 Gru 2012, 14:51
 -- Wersja serwera: 5.5.27
 -- Wersja PHP: 5.4.7
 
@@ -110,8 +110,8 @@ CREATE TABLE IF NOT EXISTS `produkty` (
 INSERT INTO `produkty` (`produktID`, `nazwa`, `producent`, `kategoria`, `cena`, `opis`, `ilosc`) VALUES
 (1, 'Laptop Acer', 1, 1, 1000, '', 0),
 (2, 'Laptop HP', 2, 1, 1700, 'Jakiś tam laptop HP', 10),
-(3, 'Laptop ASUS', 3, 1, 1600, 'Jakiś tam laptop ASUS', 10),
-(4, 'Laptop ASUS v2', 3, 1, 2199, 'Ulepszona wersja popularnego laptopa Acer!!!', 10);
+(3, 'Laptop ASUS', 3, 1, 1600, 'Jakiś tam laptop ASUS', 9),
+(4, 'Laptop ASUS v2', 3, 1, 2199, 'Ulepszona wersja popularnego laptopa Acer!!!', 0);
 
 -- --------------------------------------------------------
 
@@ -130,14 +130,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   `miejscowosc` varchar(20) COLLATE utf8_polish_ci NOT NULL,
   `blokada` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`userID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=3 ;
 
 --
 -- Zrzut danych tabeli `users`
 --
 
 INSERT INTO `users` (`userID`, `login`, `pass`, `imie`, `nazwisko`, `adres`, `kod`, `miejscowosc`, `blokada`) VALUES
-(1, 'asd@asd.pl', 'asdasdasd', 'asdasd', 'asd aaa asd', 'asdasdasd 12/21', '12-123', 'Asdland', 0);
+(1, 'asd@asd.pl', 'asdasd12', 'asdasd', 'asd aaa asd', 'asdasdasd 12/21', '12-123', 'Asdland', 0),
+(2, 'asd@asd.eu', 'asdasd12', 'asd', 'asd', 'asd', '12-123', 'asd', 0);
 
 -- --------------------------------------------------------
 
@@ -150,6 +151,13 @@ CREATE TABLE IF NOT EXISTS `users_zapamietaj` (
   `zapamietaneID` varchar(36) COLLATE utf8_polish_ci NOT NULL,
   PRIMARY KEY (`zapamietaneID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `users_zapamietaj`
+--
+
+INSERT INTO `users_zapamietaj` (`userID`, `zapamietaneID`) VALUES
+(1, 'e53facb7-6e1c-434a-882d-8839bf5ac755');
 
 -- --------------------------------------------------------
 
@@ -166,7 +174,7 @@ CREATE TABLE IF NOT EXISTS `ustawienia` (
 --
 
 INSERT INTO `ustawienia` (`licznik`) VALUES
-(22);
+(30);
 
 -- --------------------------------------------------------
 
@@ -182,7 +190,7 @@ CREATE TABLE IF NOT EXISTS `zamowienia` (
   `userID` int(11) NOT NULL,
   `status` varchar(50) COLLATE utf8_polish_ci NOT NULL DEFAULT 'Oczekiwanie na płatność',
   PRIMARY KEY (`zamowienieID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=7 ;
 
 --
 -- Zrzut danych tabeli `zamowienia`
@@ -191,7 +199,8 @@ CREATE TABLE IF NOT EXISTS `zamowienia` (
 INSERT INTO `zamowienia` (`zamowienieID`, `data`, `wysylka`, `platnosc`, `userID`, `status`) VALUES
 (3, '2012-12-25 16:19:04', 'Kurier', 'Przelew', 1, 'Oczekiwanie na płatność'),
 (4, '2012-12-25 16:20:03', 'Kurier', 'Przelew', 1, 'Oczekiwanie na płatność'),
-(5, '2012-12-26 13:31:54', 'Poczta Polska', 'Pay4U', 1, 'Oczekiwanie na płatność');
+(5, '2012-12-26 13:31:54', 'Poczta Polska', 'Pay4U', 1, 'Oczekiwanie na płatność'),
+(6, '2012-12-28 13:37:43', 'Kurier', 'Przelew', 1, 'Oczekiwanie na płatność');
 
 -- --------------------------------------------------------
 
@@ -214,7 +223,9 @@ INSERT INTO `zamowienia_produkty` (`zamowienieID`, `produktID`, `ilosc`) VALUES
 (3, 3, 1),
 (4, 1, 11),
 (4, 3, 1),
-(5, 1, 1);
+(5, 1, 1),
+(6, 4, 10),
+(6, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -237,7 +248,8 @@ CREATE TABLE IF NOT EXISTS `zamowienia_wysylka` (
 INSERT INTO `zamowienia_wysylka` (`zamowienieID`, `imieNazwisko`, `adres`, `kod`, `miejscowosc`) VALUES
 (3, 'asd asd', 'asdasdasd 12/213', '12-123', 'Asdland'),
 (4, 'asd asd', 'asdasdasd 12/213', '12-123', 'Asdland'),
-(5, 'asdasd asd aaa asd', 'asdasdasd 12/21', '12-123', 'Asdland');
+(5, 'asdasd asd aaa asd', 'asdasdasd 12/21', '12-123', 'Asdland'),
+(6, 'asdasd asd aaa asd', 'asdasdasd 12/21', '12-123', 'Asdland');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -264,7 +264,11 @@
                 <td class="style2">
                     <asp:TextBox ID="TextBoxHaslo" runat="server" TextMode="Password"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="TextBoxHaslo" Display="Dynamic" ErrorMessage="Musisz podać hasło!" ValidationGroup="Register" CssClass="auto-style2">*</asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="TextBoxHaslo" CssClass="auto-style2" Display="Dynamic" ErrorMessage="Hasło musi się składać z przynajmniej 8 znaków!" ValidationExpression=".{8,}" ValidationGroup="Register">*</asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" 
+                        ControlToValidate="TextBoxHaslo" CssClass="auto-style2" Display="Dynamic" 
+                        ErrorMessage="Hasło musi się składać z przynajmniej 8 znaków i zawierac przynajmniej 1 litere i 1 cyfre!" 
+                        ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,})$" 
+                        ValidationGroup="Register">*</asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>

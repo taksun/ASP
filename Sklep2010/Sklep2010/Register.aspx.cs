@@ -12,7 +12,10 @@ namespace Sklep2010
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["user"] != null)
+            {
+                Response.Redirect("~/Default.aspx");
+            }
         }
 
         protected void CustomValidator1_ServerValidate(object source, ServerValidateEventArgs args)

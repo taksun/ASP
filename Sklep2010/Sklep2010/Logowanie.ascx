@@ -35,6 +35,11 @@
             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
                 ControlToValidate="TextBoxHaslo" Display="Dynamic" 
                 ErrorMessage="Pole hasło nie może być puste!" ValidationGroup="login">*</asp:RequiredFieldValidator>
+            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" 
+                ControlToValidate="TextBoxHaslo" Display="Dynamic" 
+                ErrorMessage="Hasło musi się składać z przynajmniej 8 znaków i zawierac przynajmniej 1 litere i 1 cyfre!" 
+                ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,})$" 
+                ValidationGroup="login">*</asp:RegularExpressionValidator>
         </td>
     </tr>
     <tr>
