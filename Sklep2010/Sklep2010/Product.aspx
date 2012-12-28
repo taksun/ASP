@@ -7,7 +7,8 @@
     <div id="Div1">
 <asp:DataList ID="DataListProdukty" runat="server" 
             DataSourceID="SqlDataSourceProdukty" DataKeyField="produktID" 
-            onupdatecommand="DataListProdukty_UpdateCommand">
+            onupdatecommand="DataListProdukty_UpdateCommand" 
+            onitemdatabound="DataListProdukty_ItemDataBound">
         
             <ItemTemplate>
                 <table >               
@@ -44,7 +45,7 @@
         <asp:SqlDataSource ID="SqlDataSourceProdukty" runat="server" 
             ConnectionString="<%$ ConnectionStrings:CS %>" 
             ProviderName="<%$ ConnectionStrings:CS.ProviderName %>" 
-            SelectCommand="SELECT p.nazwa, p.cena, p.produktID, p.opis, pr.nazwa as producent FROM produkty p, producenci pr WHERE (p.produktID = @produktID) AND (pr.producentID = p.producent)"
+            SelectCommand="SELECT p.nazwa, p.cena, p.produktID, p.opis, pr.nazwa as producent, p.ilosc FROM produkty p, producenci pr WHERE (p.produktID = @produktID) AND (pr.producentID = p.producent)"
             UpdateCommand="UPDATE koszyk_produkt SET ilosc = ilosc+1 WHERE koszykID = @koszykID AND produktID = @produktID"
             InsertCommand="INSERT INTO koszyk_produkt(koszykID, produktID) VALUES (@koszykID, @produktID)" >
              <InsertParameters>

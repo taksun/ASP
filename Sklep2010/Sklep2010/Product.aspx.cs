@@ -62,10 +62,14 @@ namespace Sklep2010
             Response.Redirect("~/Basket.aspx");
         }
 
+        protected void DataListProdukty_ItemDataBound(object sender, DataListItemEventArgs e)
+        {
+            if (e.Item.DataItem == null) return;
 
+            int ilosc = Int32.Parse(((DataRowView)e.Item.DataItem)["ilosc"].ToString());
 
-
-
+            if (ilosc < 1) ((Button)e.Item.FindControl("ButtonDoKoszyka")).Enabled = false;
+        }
 
     }
 

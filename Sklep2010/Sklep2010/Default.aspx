@@ -22,7 +22,8 @@
            { %>
         <asp:DataList ID="DataListProdukty" runat="server" 
             DataSourceID="SqlDataSourceProdukty" DataKeyField="produktID" 
-            onupdatecommand="DataListProdukty_UpdateCommand">
+            onupdatecommand="DataListProdukty_UpdateCommand" 
+            onitemdatabound="DataListProdukty_ItemDataBound">
             <FooterTemplate>
                 </table>
                 <asp:Label ID="lblEmpty" Text="Brak produktów w kategorii" runat="server" Visible='<%#bool.Parse((DataListProdukty.Items.Count==0).ToString())%>'></asp:Label>
@@ -58,7 +59,7 @@
             ConnectionString="<%$ ConnectionStrings:CS %>" 
             ProviderName="<%$ ConnectionStrings:CS.ProviderName %>" 
             
-            SelectCommand="SELECT p.nazwa, p.cena, p.produktID, pr.nazwa as producent FROM produkty p, producenci pr WHERE (p.kategoria = ?) AND (pr.producentID = p.producent)" 
+            SelectCommand="SELECT p.nazwa, p.cena, p.produktID, pr.nazwa as producent, p.ilosc FROM produkty p, producenci pr WHERE (p.kategoria = ?) AND (pr.producentID = p.producent)" 
             
             InsertCommand="INSERT INTO koszyk_produkt(koszykID, produktID) VALUES (@koszykID, @produktID)" 
             UpdateCommand="UPDATE koszyk_produkt SET ilosc = ilosc+1 WHERE koszykID = @koszykID AND produktID = @produktID">
