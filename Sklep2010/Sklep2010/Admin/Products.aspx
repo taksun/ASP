@@ -2,7 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    
+    
+    <asp:Panel ID="Panel1" runat="server">
     <asp:SqlDataSource ID="SqlDataSourceProdukty" runat="server" 
         ConnectionString="<%$ ConnectionStrings:CS %>" 
         ProviderName="<%$ ConnectionStrings:CS.ProviderName %>" 
@@ -29,7 +31,8 @@
         oneditcommand="DataListProdukty_EditCommand" 
         oncancelcommand="DataListProdukty_CancelCommand" 
         onupdatecommand="DataListProdukty_UpdateCommand" 
-        onitemdatabound="DataListProdukty_ItemDataBound">
+        onitemdatabound="DataListProdukty_ItemDataBound" 
+        onitemcommand="DataListProdukty_ItemCommand">
         <HeaderTemplate>
             <table>
                 <tr>
@@ -37,6 +40,7 @@
                     <th>Nazwa</th>
                     <th>Producent</th>
                     <th>Kategoria</th>
+                    <th></th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -47,6 +51,7 @@
                 <td><%# Eval("nazwa") %></td>
                 <td><%# Eval("producent") %></td>
                 <td><%# Eval("kategoria") %></td>
+                <td><asp:Button ID="ButtonEdytujObrazki" runat="server" Text="Edytuj Obrazki" CommandName="Item" /></td>
                 <td><asp:Button ID="ButtonEdytuj" runat="server" Text="Edytuj" CommandName="Edit" /></td>
                 <td><asp:Button ID="ButtonUsun" runat="server" Text="Usuń" CommandName="Delete" /></td>
             </tr>
@@ -54,20 +59,20 @@
         <EditItemTemplate>
         <tr>
             <td colspan="2">ID:</td>
-            <td colspan="4">
+            <td colspan="5">
                 <%# Eval("produktID") %>
             </td>
         </tr>
         <tr>
             <td colspan="2">
             Nazwa:</td>
-            <td colspan="4">
+            <td colspan="5">
             <asp:TextBox ID="TextBoxNazwa" runat="server" Text='<%# Bind("nazwa") %>'></asp:TextBox>
             </td>
         <tr>
             <td colspan="2">
                 Producent:</td>
-            <td colspan="4">
+            <td colspan="5">
                 <asp:DropDownList ID="DropDownListProducent" runat="server" 
                     DataSourceID="Producent" DataTextField="nazwa" DataValueField="producentID">
                 </asp:DropDownList>
@@ -80,7 +85,7 @@
         </tr>
         <tr>
             <td colspan="2">Kategotia:</td>
-            <td colspan="4">
+            <td colspan="5">
                 <asp:DropDownList ID="DropDownListKategoria" runat="server" 
                     DataSourceID="Kategorie" DataTextField="nazwa" DataValueField="kategoriaID">
                 </asp:DropDownList>
@@ -93,25 +98,25 @@
         </tr>
         <tr>
             <td colspan="2">Cena:</td>
-            <td colspan="4">
+            <td colspan="5">
                 <asp:TextBox ID="TextBoxCena" runat="server" Text='<%# Bind("cena") %>'></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td colspan="2">Ilość:</td>
-            <td colspan="4">
+            <td colspan="5">
                 <asp:TextBox ID="TextBoxIlosc" runat="server"  Text='<%# Bind("ilosc") %>'></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td colspan="2">Opis:</td>
-            <td colspan="4">
+            <td colspan="5">
                 <asp:TextBox ID="TextBoxOpis" runat="server" TextMode="MultiLine"  Text='<%# Bind("opis") %>'></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td colspan="2">&nbsp;</td>
-            <td colspan="4">
+            <td colspan="5">
                 <asp:Button ID="ButtonZapisz" runat="server" Text="Zapisz" CommandName="Update" />
                 <asp:Button ID="ButtonAnuluj" runat="server" Text="Anuluj" CommandName="Cancel" />
             </td>
@@ -181,7 +186,57 @@
             <td>
                 <asp:Button ID="ButtonDodaj" runat="server" Text="Dodaj" 
                     onclick="ButtonDodaj_Click" />
+                
             </td>
         </tr>
     </table>
+    </asp:Panel>
+
+    <asp:Panel ID="Panel2" Visible="false" runat="server">
+        <asp:SqlDataSource ID="SqlDataSourceObrazki" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:CS %>" 
+            ProviderName="<%$ ConnectionStrings:CS.ProviderName %>" 
+            
+            SelectCommand="SELECT produktID, obrazek FROM produkty_obrazki WHERE produktID = @produktID" 
+            DeleteCommand="DELETE FROM produkty_obrazki WHERE produktID = @produktID AND obrazek = @obrazek" 
+            InsertCommand="INSERT INTO produkty_obrazki(produktID, obrazek) VALUES (@produktID, @obrazek)">
+            <DeleteParameters>
+                <asp:Parameter Name="produktID" Type="Int32" />
+                <asp:Parameter Name="obrazek" Type="String" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="produktID" Type="Int32" />
+                <asp:Parameter Name="obrazek" Type="String" />
+            </InsertParameters>
+            <SelectParameters>
+                <asp:Parameter DefaultValue="0" Name="produktID" Type="Int32" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+        <asp:DataList ID="DataListObrazki" runat="server" DataKeyField="obrazek" 
+            DataSourceID="SqlDataSourceObrazki" 
+            ondeletecommand="DataListObrazki_DeleteCommand">
+            <FooterTemplate>
+                </table>
+            </FooterTemplate>
+            <HeaderTemplate>
+                <table>
+                    <tr>
+                        <th>Obrazek</th>
+                        <th></th>
+                    </tr>
+            </HeaderTemplate>
+            <ItemTemplate>
+                <tr>
+                    <td><a href='../images/products/<%# Eval("produktID") %>/<%# Eval("obrazek") %>'><%# Eval("obrazek") %></a></td>
+                    <td><asp:Button ID="ButtonUsun" runat="server" Text="Usuń" CommandName="Delete" /></td>
+                </tr>
+            </ItemTemplate>
+        </asp:DataList>
+        Obrazek: 
+        <asp:FileUpload ID="FileUpload1" runat="server" /> <br />
+        <asp:Button ID="ButtonPowrot" runat="server" Text="Powrót" 
+            onclick="ButtonPowrot_Click" />
+            <asp:Button ID="ButtonDodajObrazek" runat="server" Text="Dodaj obrazek" 
+            onclick="ButtonDodajObrazek_Click"/>
+    </asp:Panel>
 </asp:Content>

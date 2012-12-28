@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Czas wygenerowania: 28 Gru 2012, 15:38
+-- Czas wygenerowania: 28 Gru 2012, 16:39
 -- Wersja serwera: 5.5.27
 -- Wersja PHP: 5.4.7
 
@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `produkty` (
   `opis` text COLLATE utf8_polish_ci NOT NULL,
   `ilosc` int(11) NOT NULL,
   PRIMARY KEY (`produktID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=7 ;
 
 --
 -- Zrzut danych tabeli `produkty`
@@ -129,7 +129,8 @@ CREATE TABLE IF NOT EXISTS `produkty_obrazki` (
 --
 
 INSERT INTO `produkty_obrazki` (`produktID`, `obrazek`) VALUES
-(1, 'Laptop-Acer-z-linii-Ethos.jpg');
+(1, 'Laptop-Acer-z-linii-Ethos.jpg'),
+(2, '07fantasy069.jpg');
 
 -- --------------------------------------------------------
 
@@ -192,7 +193,7 @@ CREATE TABLE IF NOT EXISTS `ustawienia` (
 --
 
 INSERT INTO `ustawienia` (`licznik`) VALUES
-(39);
+(55);
 
 -- --------------------------------------------------------
 

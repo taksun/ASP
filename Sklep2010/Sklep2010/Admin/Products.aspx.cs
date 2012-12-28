@@ -6,11 +6,13 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.IO;
 
 namespace Sklep2010.Admin
 {
     public partial class Products : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["admin"] == null)
@@ -29,7 +31,7 @@ namespace Sklep2010.Admin
 
             conn.Open();
 
-            cmd = new MySqlCommand("INSERT INTO produkty (nazwa, producent, kategoria, cena, opis, ilosc) VALUES (@nazwa, @producent, @kategoria, @cena, @opis, @ilosc);");
+            cmd = new MySqlCommand("INSERT INTO produkty (nazwa, producent, kategoria, cena, opis, ilosc) VALUES (@nazwa, @producent, @kategoria, @cena, @opis, @ilosc); SELECT LAST_INSERT_ID();");
             cmd.Connection = conn;
 
             param = new MySqlParameter("nazwa", MySqlDbType.String);
@@ -56,9 +58,15 @@ namespace Sklep2010.Admin
             param.Value = TextBoxIlosc.Text;
             cmd.Parameters.Add(param);
 
-            cmd.ExecuteNonQuery();
+            int id = Int32.Parse(cmd.ExecuteScalar().ToString());
+
+            string pathToCreate = "~/images/products/" + id.ToString();
+
+            Directory.CreateDirectory(Server.MapPath(pathToCreate));
 
             conn.Close();
+
+
 
             Response.Redirect("~/Admin/Products.aspx");
         }
@@ -67,6 +75,9 @@ namespace Sklep2010.Admin
         {
             SqlDataSourceProdukty.DeleteParameters["produktID"].DefaultValue = DataListProdukty.DataKeys[e.Item.ItemIndex].ToString();
             SqlDataSourceProdukty.Delete();
+
+            string pathToCreate = "~/images/products/" + DataListProdukty.DataKeys[e.Item.ItemIndex].ToString();
+            Directory.Delete(Server.MapPath(pathToCreate));
         }
 
         protected void DataListProdukty_EditCommand(object source, DataListCommandEventArgs e)
@@ -115,6 +126,43 @@ namespace Sklep2010.Admin
                     String value = ((DataRowView)e.Item.DataItem)["kategoriaID"].ToString();
                     ddl.SelectedValue = value;
                 }
+            }
+        }
+
+        protected void DataListProdukty_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            Panel1.Visible = false;
+            Panel2.Visible = true;
+            SqlDataSourceObrazki.SelectParameters["produktID"].DefaultValue = DataListProdukty.DataKeys[e.Item.ItemIndex].ToString();
+        }
+
+        protected void ButtonPowrot_Click(object sender, EventArgs e)
+        {
+            Panel1.Visible = true;
+            Panel2.Visible = false;
+        }
+
+        protected void DataListObrazki_DeleteCommand(object source, DataListCommandEventArgs e)
+        {
+            SqlDataSourceObrazki.DeleteParameters["produktID"].DefaultValue = SqlDataSourceObrazki.SelectParameters["produktID"].DefaultValue;
+            SqlDataSourceObrazki.DeleteParameters["obrazek"].DefaultValue = DataListObrazki.DataKeys[e.Item.ItemIndex].ToString();
+
+            SqlDataSourceObrazki.Delete();
+
+            string pathToFile = "~/images/products/" + SqlDataSourceObrazki.SelectParameters["produktID"].DefaultValue + "/" + DataListObrazki.DataKeys[e.Item.ItemIndex].ToString();
+            File.Delete(Server.MapPath(pathToFile));
+        }
+
+        protected void ButtonDodajObrazek_Click(object sender, EventArgs e)
+        {
+            if (FileUpload1.HasFile)
+            {
+                FileUpload1.SaveAs(Server.MapPath("~/images/products/"+SqlDataSourceObrazki.SelectParameters["produktID"].DefaultValue+"/"+FileUpload1.FileName));
+
+                SqlDataSourceObrazki.InsertParameters["produktID"].DefaultValue = SqlDataSourceObrazki.SelectParameters["produktID"].DefaultValue;
+                SqlDataSourceObrazki.InsertParameters["obrazek"].DefaultValue = FileUpload1.FileName;
+
+                SqlDataSourceObrazki.Insert();
             }
         }
     }
