@@ -6,7 +6,6 @@
     }
     .style2
     {
-        width: 51px;
     }
 </style>
 
@@ -39,6 +38,13 @@
         </td>
     </tr>
     <tr>
+        <td class="style2">
+        </td>
+        <td>
+            <asp:CheckBox ID="CheckBoxZapamietaj" runat="server" Text="Zapamiętaj" />
+        </td>
+    </tr>
+    <tr>
         <td colspan="2">
             <asp:Label ID="LInfo" runat="server" Text="Label" Visible="False" 
                 ForeColor="Red"></asp:Label>
@@ -63,7 +69,17 @@
 <asp:SqlDataSource ID="SqlDataSourceLogin" runat="server" 
     ConnectionString="<%$ ConnectionStrings:CS %>" 
     ProviderName="<%$ ConnectionStrings:CS.ProviderName %>" 
-    SelectCommand="SELECT userID, blokada FROM users WHERE ((login = @login) AND (pass = @pass));">
+    
+    SelectCommand="SELECT userID, blokada FROM users WHERE ((login = @login) AND (pass = @pass));" 
+    DeleteCommand="DELETE FROM users_zapamietaj WHERE userID = @userID" 
+    InsertCommand="INSERT INTO users_zapamietaj(userID, zapamietaneID) VALUES (@userID,@zapamietaneID)">
+    <DeleteParameters>
+        <asp:Parameter Name="userID" Type="Int32" />
+    </DeleteParameters>
+    <InsertParameters>
+        <asp:Parameter Name="userID" Type="Int32" />
+        <asp:Parameter Name="zapamietaneID" Type="String" />
+    </InsertParameters>
     <SelectParameters>
         <asp:ControlParameter ControlID="TextBoxLogin" Name="login" PropertyName="Text" 
             Type="String" />

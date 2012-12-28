@@ -32,6 +32,23 @@ namespace Sklep2010
                 }
                 else
                 {
+                    if (CheckBoxZapamietaj.Checked)
+                    {
+                        HttpCookie cookie = new HttpCookie("usr", System.Guid.NewGuid().ToString());
+                        cookie.Expires = DateTime.Now.AddYears(10);
+
+                        Response.Cookies.Add(cookie);
+
+                        SqlDataSourceLogin.DeleteParameters["userID"].DefaultValue = drv["userID"].ToString();
+
+                        SqlDataSourceLogin.Delete();
+
+                        SqlDataSourceLogin.InsertParameters["userID"].DefaultValue = drv["userID"].ToString();
+                        SqlDataSourceLogin.InsertParameters["zapamietaneID"].DefaultValue = cookie.Value;
+
+                        SqlDataSourceLogin.Insert();
+                    }
+
 
                     Session["user"] = new User(int.Parse(drv["userID"].ToString()));
 

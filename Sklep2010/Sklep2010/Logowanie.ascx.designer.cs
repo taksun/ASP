@@ -76,6 +76,15 @@ namespace Sklep2010 {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
         
         /// <summary>
+        /// CheckBoxZapamietaj control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckBoxZapamietaj;
+        
+        /// <summary>
         /// LInfo control.
         /// </summary>
         /// <remarks>
