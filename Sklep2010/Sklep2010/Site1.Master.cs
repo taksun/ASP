@@ -12,7 +12,7 @@ namespace Sklep2010
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.Cookies["usr"] != null)
+            if ((Request.Cookies["usr"] != null) && (Session["user"]==null))
             {
                 MySqlConnection conn;
                 MySqlCommand cmd;
