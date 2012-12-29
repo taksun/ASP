@@ -85,12 +85,18 @@ namespace Sklep2010.Admin
             DataListProdukty.EditItemIndex = e.Item.ItemIndex;
 
             DataListProdukty.DataBind();
+
+            Panel1.Visible = true;
+            Panel2.Visible = false;
         }
 
         protected void DataListProdukty_CancelCommand(object source, DataListCommandEventArgs e)
         {
             DataListProdukty.EditItemIndex = -1;
             DataListProdukty.DataBind();
+
+            Panel1.Visible = true;
+            Panel2.Visible = false;
         }
 
         protected void DataListProdukty_UpdateCommand(object source, DataListCommandEventArgs e)
@@ -107,6 +113,9 @@ namespace Sklep2010.Admin
 
             DataListProdukty.EditItemIndex = -1;
             DataListProdukty.DataBind();
+
+            Panel1.Visible = true;
+            Panel2.Visible = false;
         }
 
         protected void DataListProdukty_ItemDataBound(object sender, DataListItemEventArgs e)
