@@ -84,7 +84,7 @@
             </td>
         </tr>
         <tr>
-            <td colspan="2">Kategotia:</td>
+            <td colspan="2">Kategoria:</td>
             <td colspan="5">
                 <asp:DropDownList ID="DropDownListKategoria" runat="server" 
                     DataSourceID="Kategorie" DataTextField="nazwa" DataValueField="kategoriaID">
