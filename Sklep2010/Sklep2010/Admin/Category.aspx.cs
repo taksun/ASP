@@ -32,12 +32,14 @@ namespace Sklep2010.Admin
 
             conn.Open();
 
-            cmd = new MySqlCommand("INSERT INTO kategorie VALUES nazwa; SELECT LAST_INSERT_ID();");
+            cmd = new MySqlCommand("INSERT INTO kategorie (nazwa) VALUES (@nazwa);");
             cmd.Connection = conn;
 
             param = new MySqlParameter("nazwa", MySqlDbType.String);
             param.Value = TextBoxNazwa.Text;
             cmd.Parameters.Add(param);
+
+            cmd.ExecuteNonQuery();
 
             conn.Close();
 
@@ -57,18 +59,12 @@ namespace Sklep2010.Admin
             DataListKategorie.EditItemIndex = e.Item.ItemIndex;
 
             DataListKategorie.DataBind();
-
-            Panel1.Visible = true;
-          //  Panel2.Visible = false;
         }
 
         protected void DataListKategorie_CancelCommand(object source, DataListCommandEventArgs e)
         {
             DataListKategorie.EditItemIndex = -1;
             DataListKategorie.DataBind();
-
-            Panel1.Visible = true;
-           // Panel2.Visible = false;
         }
 
         protected void DataListKategorie_UpdateCommand(object source, DataListCommandEventArgs e)
@@ -81,17 +77,7 @@ namespace Sklep2010.Admin
 
             DataListKategorie.EditItemIndex = -1;
             DataListKategorie.DataBind();
-
-            Panel1.Visible = true;
-         //   Panel2.Visible = false;
         }
-
-        protected void ButtonPowrot_Click(object sender, EventArgs e)
-        {
-            Panel1.Visible = true;
-           // Panel2.Visible = false;
-        }
-
         
     }
 }

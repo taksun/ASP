@@ -2,7 +2,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Panel ID="Panel1" runat="server">
     <asp:SqlDataSource ID="SqlDataSourceKategorie" runat="server" 
         ConnectionString="<%$ ConnectionStrings:CS %>" 
         ProviderName="<%$ ConnectionStrings:CS.ProviderName %>" 
@@ -15,6 +14,7 @@
         </DeleteParameters>
         <UpdateParameters>        
             <asp:Parameter Name="kategoriaID" Type="Int32" />
+            <asp:Parameter Name="nazwa" Type="String" />
         </UpdateParameters>
     </asp:SqlDataSource>
     <asp:DataList ID="DataListKategorie" runat="server" 
@@ -73,7 +73,7 @@
     <br />
     Dodaj nowa kategorie
     <br />
-    <table class="auto-style4">
+    <table>
         <tr>
             <td>Nazwa:</td>
             <td>
@@ -87,5 +87,4 @@
             </td>
         </tr>
     </table>
-    </asp:Panel>
 </asp:Content>
