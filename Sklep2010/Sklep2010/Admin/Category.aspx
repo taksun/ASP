@@ -7,7 +7,7 @@
         ConnectionString="<%$ ConnectionStrings:CS %>" 
         ProviderName="<%$ ConnectionStrings:CS.ProviderName %>" 
         
-        SelectCommand="SELECT kategoriaID, nazwa as kategoria FROM kategorie" 
+        SelectCommand="SELECT kategoriaID, nazwa FROM kategorie" 
         DeleteCommand="DELETE FROM kategorie WHERE (kategoriaID = @kategoriaID)" 
         UpdateCommand="UPDATE kategorie SET nazwa = @nazwa WHERE kategoriaID = @kategoriaID">
         <DeleteParameters>
