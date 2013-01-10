@@ -268,7 +268,8 @@ a:hover {
 }
 
 
-#column1 {
+#column1 
+{
 	float: left;
 	width: 280px;
 	margin-right: 30px;
@@ -278,7 +279,8 @@ a:hover {
 	line-height: 1;
 }
 
-#column2 {
+#column2 
+{
 	float: left;
 	width: 280px;
 	margin-right: 30px;

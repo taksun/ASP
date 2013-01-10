@@ -113,14 +113,14 @@ Released   : 20120818
 <div id="footer-content" class="container">
 	<div id="footer-bg">
 		<div id="column1">
-			<h2>Untitled Inc.</h2>
-			<p>Copyright (c) 2012 Sitename.com</p>
+			<h2>Sklep Internetowy</h2>
+			<p>Copyright (c) 2013 Sklep Internetowy</p>
 			<p>All rights reserved.</p>
 			<p>Design by <a href="http://www.freecsstemplates.org">FCT</a>. Photos by <a href="http://fotogrph.com/">Fotogrph</a>.</p>
             <p>Ilość odwiedzin strony: <% Response.Write(Application["cnt"]); %></p>
 		</div>
 		<div id="column2">
-			<h2>Rhoncus volutpat</h2>
+			<!--h2>Rhoncus volutpat</h2>
 			<ul class="list-style3">
 				<li class="first"><a href="#">Pellentesque consectetuer gravida blandit.</a></li>
 				<li><a href="#">Lorem consectetuer adipiscing elit.</a></li>
@@ -128,10 +128,10 @@ Released   : 20120818
 				<li><a href="#">Cras vitae pellentesque pharetra.</a></li>
 				<li><a href="#">Maecenas vitae vitae feugiat eleifend.</a></li>
 				<li><a href="#">Pellentesque consectetuer gravida blandit.</a></li>
-			</ul>
+			</ul-->
 		</div>
 		<div id="column3">
-			<h2>Recommended Links</h2>
+			<!--h2>Recommended Links</h2>
 			<ul class="list-style3">
 				<li class="first"><a href="#">Pellentesque consectetuer gravida blandit.</a></li>
 				<li><a href="#">Lorem consectetuer adipiscing elit.</a></li>
@@ -139,10 +139,10 @@ Released   : 20120818
 				<li><a href="#">Cras vitae pellentesque pharetra.</a></li>
 				<li><a href="#">Maecenas vitae vitae feugiat eleifend.</a></li>
 				<li><a href="#">Pellentesque consectetuer gravida blandit.</a></li>
-			</ul>
+			</ul-->
 		</div>
 		<div id="column4">
-			<h2>Social</h2>
+			<!--h2>Social</h2>
 			<ul class="list-style3">
 				<li class="first"><a href="#">Twitter</a></li>
 				<li><a href="#">Facebook</a></li>
@@ -150,7 +150,7 @@ Released   : 20120818
 				<li><a href="#">Google +</a></li>
 				<li><a href="#">Instagram</a></li>
 				<li><a href="#">RSS</a></li>
-			</ul>
+			</ul-->
 		</div>
 	</div>
 </div>
