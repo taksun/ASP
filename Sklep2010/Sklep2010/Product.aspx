@@ -13,28 +13,26 @@
             <ItemTemplate>
                 <table >               
                      <tr>                   
-                          <th style="width:100px;"></th>   
+                          <td style="width: 400px; height: 300px; vertical-align:top;" rowspan="4"><asp:Image ID="ImageObrazek" runat="server" ImageUrl="~/images/No_image.jpg" style="max-height: 300px; max-width: 400px;"></asp:Image></td>  
                           <th style="width:100px;">Nazwa</th>    
                           <td><%# Eval("nazwa") %></td>                  
                     </tr> 
-                    <tr>  
-                        <td>&nbsp;</td>    
+                    <tr>    
                         <th style="width:100px;">Producent</th>   
                         <td><%# Eval("producent") %></td>                      
                     </tr>      
-                    <tr>                     
-                        <td>&nbsp;</td>         
+                    <tr>                           
                         <th style="width:100px;">Cena</th>   
                         <td><%# Eval("cena") %></td>                                      
                     </tr> 
                   <tr>
-                  <td><asp:Image ID="ImageObrazek" runat="server" ImageUrl="~/images/No_image.jpg"></asp:Image></td> 
-                  <th style="width:100px;">Opis</th>
-                  <td><%# Eval("opis") %></td>
+                  
+                  <th style="width:100px;" valign="top">Opis</th>
+                  <td valign="top"><%# Eval("opis") %></td>
                   </tr> 
                   <tr>
                   <td>&nbsp;</td> 
-                  <td>&nbsp;</td> 
+                  <td><input type="button" onclick="history.back()" value="Powrót"></td> 
                   <td><asp:Button ID="ButtonDoKoszyka" runat="server" Text="Dodaj do koszyka" CommandName="Update" /></td>
                   </tr>                               
                    </table>                   
