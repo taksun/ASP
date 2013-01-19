@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using MySql.Data.MySqlClient;
+using System.Net.Mail;
 
 namespace Sklep2010
 {
@@ -196,6 +197,33 @@ namespace Sklep2010
             cmd.ExecuteNonQuery();
 
             conn.Close();
+
+            try
+            {
+                MailMessage mailMessage = new MailMessage();
+                mailMessage.To.Add(((User)Session["User"]).getEmail());
+                mailMessage.From = new MailAddress("sklepasp@o2.pl");
+                mailMessage.Subject = "Zamówienie w sklepie internetowym";
+                mailMessage.IsBodyHtml = true;
+                mailMessage.Body = "Witaj, <br /><br />Właśnie złożyłeś zamówienie w sklepieasp!<br /><br /> Link do Twoich zamówień: <a href='http://localhost:8080/MyAcc.aspx?page=1'>link</a>";
+
+                MailMessage mailMessage2 = new MailMessage();
+                mailMessage2.To.Add("sklepasp@o2.pl");
+                mailMessage2.From = new MailAddress("sklepasp@o2.pl");
+                mailMessage2.Subject = "Nowe zamówienie w sklepie internetowym";
+                mailMessage2.IsBodyHtml = true;
+                mailMessage2.Body = "Witaj, <br /><br />Właśnie użytkownik " + ((User)Session["User"]).getEmail() + " złożył zamówienie w sklepieasp!";
+
+                SmtpClient smtpClient = new SmtpClient("poczta.o2.pl");
+                smtpClient.Credentials = new System.Net.NetworkCredential("sklepasp@o2.pl", "sklepasp123");
+                smtpClient.EnableSsl = true;
+                smtpClient.Send(mailMessage);
+                smtpClient.Send(mailMessage2);
+            }
+            catch (Exception ex)
+            {
+                Response.Write("Could not send the e-mail - error: " + ex.Message);
+            }
 
             Panel2.Visible = false;
             Panel3.Visible = true;

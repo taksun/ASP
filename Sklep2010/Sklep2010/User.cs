@@ -89,6 +89,11 @@ namespace Sklep2010
             return id;
         }
 
+        public String getEmail()
+        {
+            return login;
+        }
+
         public String getPass()
         {
             return pass;

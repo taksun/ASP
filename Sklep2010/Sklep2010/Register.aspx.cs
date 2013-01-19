@@ -32,7 +32,7 @@ namespace Sklep2010
             {
                 SqlDataSourceRegister.Insert();
 
-                Response.Redirect("~/Default.aspx");
+                Response.Redirect("~/Login.aspx");
             }
         }
 
